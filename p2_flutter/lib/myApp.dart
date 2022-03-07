@@ -18,8 +18,9 @@ class MyAppp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home://Informations()
-      //MainPage() ,
-      MeetsDetail(),
+      MainPage() ,
+      //MeetsDetail(),
+      //commentaire ajouté
     );
   }
 }
