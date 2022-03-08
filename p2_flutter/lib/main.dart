@@ -44,11 +44,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:// HomePage(),
-      MyAppp(),
+      home: HomePage(),
+      //MyAppp(),
     );
   }
-}
+} 
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
