@@ -7,6 +7,8 @@ import 'package:p2_flutter/widgets/big_text.dart';
 import 'package:p2_flutter/widgets/icon_and_text_widget.dart';
 import 'package:p2_flutter/widgets/small_text.dart';
 
+import '../constants.dart';
+
 class Part1PageBody extends StatefulWidget {
   const Part1PageBody({Key? key}) : super(key: key);
 
@@ -19,6 +21,8 @@ class _Part1PageBodyState extends State<Part1PageBody> {
   var _currPageValue=0.0;
   double _scaleFactor = 0.8;
   double _height =Dimensions.pageViewContainer;
+
+
   @override
   void initState(){
     super.initState();
@@ -89,10 +93,13 @@ class _Part1PageBodyState extends State<Part1PageBody> {
           ),
         ),
         //list of images and informations about diabete
+
+
+
         ListView.builder(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: 10,
+              itemCount: INFORMATIONS_DATA.length,
               itemBuilder: (context,index){
                 return Container(
                   margin: EdgeInsets.only(left: Dimensions.width20,right: Dimensions.width20,bottom: Dimensions.height10),
@@ -108,7 +115,7 @@ class _Part1PageBodyState extends State<Part1PageBody> {
                           image:DecorationImage(
                               fit: BoxFit.cover,
                               image:AssetImage(
-                                  "assets/image/img2.jpg"
+                                  INFORMATIONS_DATA[index]["img"] as String
                               )
                           ),
                         ),
@@ -130,7 +137,7 @@ class _Part1PageBodyState extends State<Part1PageBody> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                BigText(text: "la maladie diabete et ces types"),
+                                BigText(text :INFORMATIONS_DATA[index]["name"] as String),
                                 SizedBox(height: Dimensions.height10,),
                                 SmallText(text: "voir plus d'informations"),
                                 SizedBox(height: Dimensions.height10,),
@@ -140,7 +147,7 @@ class _Part1PageBodyState extends State<Part1PageBody> {
                                   children: [
 
                                     IconAndTextWidget(icon: Icons.date_range,
-                                        text: "Date:jj/mm/aaaa",
+                                        text: INFORMATIONS_DATA[index]["date"] as String,
                                         iconColor: AppColors.iconColor1),
 
 
