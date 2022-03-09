@@ -111,10 +111,12 @@ class _Part1PageBodyState extends State<Part1PageBody> {
               itemCount: INFORMATIONS_DATA.length,
               itemBuilder: (context,index){
                 return  GestureDetector(
+
                   onTap: (){
                     Get.to(()=>Informations());
                   },
                   child: Container(
+
                     margin: EdgeInsets.only(left: Dimensions.width20,right: Dimensions.width20,bottom: Dimensions.height10),
                     child: Row(
                       children: [

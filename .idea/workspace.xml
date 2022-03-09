@@ -23,15 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="963da496-dea6-449c-b0ea-ee75557871a3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/p2_flutter/lib/routes/route_helper.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2_flutter/lib/home/part1_page_body.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2_flutter/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/p2_flutter/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/p2_flutter/lib/myApp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/p2_flutter/lib/myApp.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p2_flutter/lib/pages/home/meets_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/p2_flutter/lib/pages/home/meets_detail.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/p2_flutter/lib/pages/home/part1_page_body.dart" beforeDir="false" afterPath="$PROJECT_DIR$/p2_flutter/lib/pages/home/part1_page_body.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2_flutter/lib/pages/meets/informations.dart" beforeDir="false" afterPath="$PROJECT_DIR$/p2_flutter/lib/pages/home/informations.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2_flutter/lib/pages/meets/meets_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/p2_flutter/lib/pages/home/meets_detail.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2_flutter/lib/questionnaire.dart" beforeDir="false" afterPath="$PROJECT_DIR$/p2_flutter/lib/questionnaire.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:p2_flutter/utils/colors.dart';
 import 'package:p2_flutter/utils/dimensions.dart';
 import 'package:p2_flutter/widgets/app_column.dart';
 import 'package:p2_flutter/widgets/app_icon.dart';
 import 'package:p2_flutter/widgets/big_text.dart';
 import 'package:p2_flutter/widgets/exandable_text_widget.dart';
+
+import 'main_page.dart';
 
 
 class MeetsDetail extends StatelessWidget {
@@ -42,7 +46,11 @@ class MeetsDetail extends StatelessWidget {
               child:Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    AppIcon(icon: Icons.arrow_back_ios),
+                    GestureDetector(
+                        onTap: (){
+                          Get.to(()=>MainPage());
+                        },
+                        child: AppIcon(icon: Icons.arrow_back_ios)),
                     AppIcon(icon: Icons.star_border_purple500_outlined,)
                   ],
               ),
