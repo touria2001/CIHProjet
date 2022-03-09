@@ -6,7 +6,7 @@ import 'package:p2_flutter/widgets/app_column.dart';
 import 'package:p2_flutter/widgets/big_text.dart';
 import 'package:p2_flutter/widgets/icon_and_text_widget.dart';
 import 'package:p2_flutter/widgets/small_text.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart'  ;
 
 class Part1PageBody extends StatefulWidget {
   const Part1PageBody({Key? key}) : super(key: key);
@@ -16,13 +16,13 @@ class Part1PageBody extends StatefulWidget {
 }
 
 class _Part1PageBodyState extends State<Part1PageBody> {
-  Widget x = Text("Loding..");
-  getData() async {
+  
+   getData() async {
     CollectionReference articles =
-        FirebaseFirestore.instance.collection('articles');
+       FirebaseFirestore.instance.collection('articles');
     QuerySnapshot querySnapshot = await articles.get();
    List<QueryDocumentSnapshot> listdocs = querySnapshot.docs; 
-    x = Text("sfdsfdf");//docs
+  
 
     listdocs.forEach((element) { //elemenet
       print(element.data());//data of element
@@ -50,147 +50,153 @@ class _Part1PageBodyState extends State<Part1PageBody> {
   void dispose() {
     pageController.dispose();
   }
+FirebaseFirestore Firestore = FirebaseFirestore.instance;
 
   
   @override
   Widget build(BuildContext context) {
-    return x;
-    // return Column(
-    //   children: [
-    //     //slider section
-    //     Container(
-    //       // color: Color(0xFF9294cc),
-    //       height: Dimensions.pageView,
-    //       child: PageView.builder(
-    //           controller: pageController,
-    //           itemCount: 5,
-    //           itemBuilder: (context, position) {
-    //             return _buildPageItem(position);
-    //           }),
-    //     ),
+    return StreamBuilder(
+            stream: Firestore.collection('articles').snapshots(),
+            builder: (context, snapshot) {
+              if(!snapshot.hasData) return const Text("Loading...");
+              return 
+    
+     Column(
+      children: [
+        //slider section
+        Container(
+          // color: Color(0xFF9294cc),
+          height: Dimensions.pageView,
+          child: PageView.builder(
+              controller: pageController,
+              itemCount: 5,
+              itemBuilder: (context, position) {
+                return _buildPageItem(position);
+              }),
+        ),
 
-    //     SizedBox(
-    //       height: Dimensions.height2,
-    //     ),
+        SizedBox(
+          height: Dimensions.height2,
+        ),
 
-    //     //dots no9aats hhh
-    //     new DotsIndicator(
-    //       dotsCount: 5,
-    //       position: _currPageValue,
-    //       decorator: DotsDecorator(
-    //         activeColor: AppColors.mainColor,
-    //         size: const Size.square(9.0),
-    //         activeSize: const Size(18.0, 9.0),
-    //         activeShape: RoundedRectangleBorder(
-    //             borderRadius: BorderRadius.circular(5.0)),
-    //       ),
-    //     ),
+        //dots no9aats hhh
+        new DotsIndicator(
+          dotsCount: 5,
+          position: _currPageValue,
+          decorator: DotsDecorator(
+            activeColor: AppColors.mainColor,
+            size: const Size.square(9.0),
+            activeSize: const Size(18.0, 9.0),
+            activeShape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0)),
+          ),
+        ),
 
-    //     //popular text
-    //     SizedBox(
-    //       height: Dimensions.height2,
-    //     ),
-    //     Container(
-    //       margin: EdgeInsets.only(left: Dimensions.width30),
-    //       child: Row(
-    //         crossAxisAlignment: CrossAxisAlignment.end,
-    //         children: [
-    //           BigText(text: "page home"),
-    //           SizedBox(
-    //             width: Dimensions.width5,
-    //           ),
-    //           Container(
-    //             margin: const EdgeInsets.only(bottom: 3),
-    //             child: BigText(
-    //               text: ".",
-    //               color: Colors.black26,
-    //             ),
-    //           ),
-    //           SizedBox(
-    //             width: Dimensions.width5,
-    //           ),
-    //           Container(
-    //             margin: const EdgeInsets.only(bottom: 2),
-    //             child: SmallText(
-    //               text: "Les catégories",
-    //               color: Colors.black26,
-    //             ),
-    //           ),
-    //         ],
-    //       ),
-    //     ),
-    //     //list of images and informations about diabete
-    //     ListView.builder(
-    //         physics: NeverScrollableScrollPhysics(),
-    //         shrinkWrap: true,
-    //         itemCount: 10,
-    //         itemBuilder: (context, index) {
-    //           return Container(
-    //             margin: EdgeInsets.only(
-    //                 left: Dimensions.width20,
-    //                 right: Dimensions.width20,
-    //                 bottom: Dimensions.height10),
-    //             child: Row(
-    //               children: [
-    //                 //image section
-    //                 Container(
-    //                   width: Dimensions.listViewImgSize,
-    //                   height: Dimensions.listViewImgSize,
-    //                   decoration: BoxDecoration(
-    //                     borderRadius:
-    //                         BorderRadius.circular(Dimensions.radius20),
-    //                     color: Colors.white38,
-    //                     image: DecorationImage(
-    //                         fit: BoxFit.cover,
-    //                         image: AssetImage("assets/image/img2.jpg")),
-    //                   ),
-    //                 ),
-    //                 //text Container
-    //                 Expanded(
-    //                   child: Container(
-    //                     height: Dimensions.listTextContSize,
-    //                     decoration: BoxDecoration(
-    //                       borderRadius: BorderRadius.only(
-    //                         topRight: Radius.circular(Dimensions.radius20),
-    //                         bottomRight: Radius.circular(Dimensions.radius20),
-    //                       ),
-    //                       color: Colors.white,
-    //                     ),
-    //                     child: Padding(
-    //                       padding: EdgeInsets.only(left: Dimensions.width10),
-    //                       child: Column(
-    //                         crossAxisAlignment: CrossAxisAlignment.start,
-    //                         mainAxisAlignment: MainAxisAlignment.center,
-    //                         children: [
-    //                           BigText(text: "la maladie diabete et ces types"),
-    //                           SizedBox(
-    //                             height: Dimensions.height10,
-    //                           ),
-    //                           SmallText(text: "voir plus d'informations"),
-    //                           SizedBox(
-    //                             height: Dimensions.height10,
-    //                           ),
-    //                           Row(
-    //                             mainAxisAlignment:
-    //                                 MainAxisAlignment.spaceAround,
-    //                             children: [
-    //                               IconAndTextWidget(
-    //                                   icon: Icons.date_range,
-    //                                   text: "Date:jj/mm/aaaa",
-    //                                   iconColor: AppColors.iconColor1),
-    //                             ],
-    //                           )
-    //                         ],
-    //                       ),
-    //                     ),
-    //                   ),
-    //                 ),
-    //               ],
-    //             ),
-    //           );
-    //         }),
-    //   ],
-    // );
+        //popular text
+        SizedBox(
+          height: Dimensions.height2,
+        ),
+        Container(
+          margin: EdgeInsets.only(left: Dimensions.width30),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              BigText(text: "page home"),
+              SizedBox(
+                width: Dimensions.width5,
+              ),
+              Container(
+                margin: const EdgeInsets.only(bottom: 3),
+                child: BigText(
+                  text: ".",
+                  color: Colors.black26,
+                ),
+              ),
+              SizedBox(
+                width: Dimensions.width5,
+              ),
+              Container(
+                margin: const EdgeInsets.only(bottom: 2),
+                child: SmallText(
+                  text: "Les catégories",
+                  color: Colors.black26,
+                ),
+              ),
+            ],
+          ),
+        ),
+        //list of images and informations about diabete
+        ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return Container(
+                margin: EdgeInsets.only(
+                    left: Dimensions.width20,
+                    right: Dimensions.width20,
+                    bottom: Dimensions.height10),
+                child: Row(
+                  children: [
+                    //image section
+                    Container(
+                      width: Dimensions.listViewImgSize,
+                      height: Dimensions.listViewImgSize,
+                      decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.circular(Dimensions.radius20),
+                        color: Colors.white38,
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage("assets/image/img2.jpg")),
+                      ),
+                    ),
+                    //text Container
+                    Expanded(
+                      child: Container(
+                        height: Dimensions.listTextContSize,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(Dimensions.radius20),
+                            bottomRight: Radius.circular(Dimensions.radius20),
+                          ),
+                          color: Colors.white,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.only(left: Dimensions.width10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              BigText(text: "la maladie diabete et ces types"),
+                              SizedBox(
+                                height: Dimensions.height10,
+                              ),
+                              SmallText(text: "voir plus d'informations"),
+                              SizedBox(
+                                height: Dimensions.height10,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  IconAndTextWidget(
+                                      icon: Icons.date_range,
+                                      text: "Date:jj/mm/aaaa",
+                                      iconColor: AppColors.iconColor1),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            }),
+      ],
+    );});
   }
 
   Widget _buildPageItem(int index) {
