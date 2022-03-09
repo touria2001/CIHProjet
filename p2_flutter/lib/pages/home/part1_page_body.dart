@@ -6,38 +6,25 @@ import 'package:p2_flutter/widgets/app_column.dart';
 import 'package:p2_flutter/widgets/big_text.dart';
 import 'package:p2_flutter/widgets/icon_and_text_widget.dart';
 import 'package:p2_flutter/widgets/small_text.dart';
-import 'package:cloud_firestore/cloud_firestore.dart'  ;
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../constants.dart';
 
 class Part1PageBody extends StatefulWidget {
   const Part1PageBody({Key? key}) : super(key: key);
-
   @override
   _Part1PageBodyState createState() => _Part1PageBodyState();
 }
 
 class _Part1PageBodyState extends State<Part1PageBody> {
-  
-   getData() async {
-    CollectionReference articles =
-       FirebaseFirestore.instance.collection('articles');
-    QuerySnapshot querySnapshot = await articles.get();
-   List<QueryDocumentSnapshot> listdocs = querySnapshot.docs; 
-  
-
-    listdocs.forEach((element) { //elemenet
-      print(element.data());//data of element
-      print("====================");
-    });
-  }
-
   PageController pageController = PageController(viewportFraction: 0.90);
   var _currPageValue = 0.0;
-  double _scaleFactor = 0.8;
-  double _height = Dimensions.pageViewContainer;
+  final double _scaleFactor = 0.8;
+  final double _height = Dimensions.pageViewContainer;
+
   @override
   void initState() {
     super.initState();
-    getData();
     pageController.addListener(() {
       setState(() {
         _currPageValue = pageController.page!;
@@ -47,21 +34,18 @@ class _Part1PageBodyState extends State<Part1PageBody> {
   }
 
   @override
-  void dispose() {
+  Future<void> dispose() async {
     pageController.dispose();
   }
-FirebaseFirestore Firestore = FirebaseFirestore.instance;
 
-  
+ FirebaseFirestore Firestore = FirebaseFirestore.instance;
   @override
-  Widget build(BuildContext context) {
-    return StreamBuilder(
-            stream: Firestore.collection('articles').snapshots(),
-            builder: (context, snapshot) {
-              if(!snapshot.hasData) return const Text("Loading...");
-              return 
-    
-     Column(
+   Widget build(BuildContext context) {
+      return StreamBuilder( stream: Firestore.collection('articles').snapshots(), 
+      builder: (context, snapshot) {
+         if(!snapshot.hasData) {return const Text("Loading..."); }
+         
+         return Column(
       children: [
         //slider section
         Container(
@@ -126,10 +110,11 @@ FirebaseFirestore Firestore = FirebaseFirestore.instance;
           ),
         ),
         //list of images and informations about diabete
+
         ListView.builder(
             physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            itemCount: 10,
+            itemCount: INFORMATIONS_DATA.length,
             itemBuilder: (context, index) {
               return Container(
                 margin: EdgeInsets.only(
@@ -148,7 +133,8 @@ FirebaseFirestore Firestore = FirebaseFirestore.instance;
                         color: Colors.white38,
                         image: DecorationImage(
                             fit: BoxFit.cover,
-                            image: AssetImage("assets/image/img2.jpg")),
+                            image: AssetImage(
+                                INFORMATIONS_DATA[index]["img"] as String)),
                       ),
                     ),
                     //text Container
@@ -168,7 +154,9 @@ FirebaseFirestore Firestore = FirebaseFirestore.instance;
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              BigText(text: "la maladie diabete et ces types"),
+                              BigText(
+                                  text: INFORMATIONS_DATA[index]["name"]
+                                      as String),
                               SizedBox(
                                 height: Dimensions.height10,
                               ),
@@ -182,7 +170,8 @@ FirebaseFirestore Firestore = FirebaseFirestore.instance;
                                 children: [
                                   IconAndTextWidget(
                                       icon: Icons.date_range,
-                                      text: "Date:jj/mm/aaaa",
+                                      text: INFORMATIONS_DATA[index]["date"]
+                                          as String,
                                       iconColor: AppColors.iconColor1),
                                 ],
                               )
@@ -237,7 +226,7 @@ FirebaseFirestore Firestore = FirebaseFirestore.instance;
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimensions.radius30),
                   color: index.isEven ? Color(0xFF69c5df) : Color(0xFF9294cc),
-                  image: DecorationImage(
+                  image: const DecorationImage(
                       fit: BoxFit.cover,
                       image: AssetImage("assets/image/img1.jpg")))),
           Align(
@@ -251,7 +240,7 @@ FirebaseFirestore Firestore = FirebaseFirestore.instance;
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimensions.radius20),
                   color: Colors.white,
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                       color: Color(0xFFe8e8e8),
                       blurRadius: 5.0,
@@ -269,7 +258,7 @@ FirebaseFirestore Firestore = FirebaseFirestore.instance;
               child: Container(
                 padding: EdgeInsets.only(
                     top: Dimensions.height15, left: 15, bottom: 15),
-                child: AppColumn(
+                child: const AppColumn(
                   text: "meeting sujet",
                 ),
               ),

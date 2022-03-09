@@ -40,6 +40,7 @@ class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final Size size= MediaQuery.of(context).size;
     return MaterialApp(
       theme: ThemeData(
         primarySwatch: Colors.blue,
