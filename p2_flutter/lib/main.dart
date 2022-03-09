@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart'
     as phoneInput;
+import 'package:p2_flutter/pages/home/informations.dart';
+import 'package:p2_flutter/pages/home/meets_detail.dart';
 import 'package:p2_flutter/signUp.dart';
 import 'package:p2_flutter/otp.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -45,11 +47,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:// HomePage(),
+      home://MeetsDetail(),
+      //Informations(),// HomeP age(),
       MyAppp(),
+
     );
   }
 }
+
+
+
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);

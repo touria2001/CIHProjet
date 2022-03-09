@@ -1,5 +1,8 @@
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:p2_flutter/utils/colors.dart';
 import 'package:p2_flutter/utils/dimensions.dart';
 import 'package:p2_flutter/widgets/app_column.dart';
@@ -8,10 +11,11 @@ import 'package:p2_flutter/widgets/icon_and_text_widget.dart';
 import 'package:p2_flutter/widgets/small_text.dart';
 
 import '../constants.dart';
+import 'informations.dart';
+import 'meets_detail.dart';
 
 class Part1PageBody extends StatefulWidget {
   const Part1PageBody({Key? key}) : super(key: key);
-
   @override
   _Part1PageBodyState createState() => _Part1PageBodyState();
 }
@@ -19,8 +23,8 @@ class Part1PageBody extends StatefulWidget {
 class _Part1PageBodyState extends State<Part1PageBody> {
   PageController pageController = PageController(viewportFraction: 0.90 );
   var _currPageValue=0.0;
-  double _scaleFactor = 0.8;
-  double _height =Dimensions.pageViewContainer;
+  final double _scaleFactor = 0.8;
+  final double _height =Dimensions.pageViewContainer;
 
 
   @override
@@ -34,7 +38,7 @@ class _Part1PageBodyState extends State<Part1PageBody> {
     });
   }
   @override
-  void dispose(){
+  Future<void> dispose() async {
     pageController.dispose();
   }
   @override
@@ -45,13 +49,18 @@ class _Part1PageBodyState extends State<Part1PageBody> {
         Container(
           // color: Color(0xFF9294cc),
           height:Dimensions.pageView,
-          child: PageView.builder(
-              controller: pageController,
-              itemCount:5 ,
-              itemBuilder: (context , position){
-                return _buildPageItem(position);
+          child: GestureDetector(
+            onTap: (){
+              Get.to(()=>MeetsDetail());
+            },
+            child: PageView.builder(
+                controller: pageController,
+                itemCount:5 ,
+                itemBuilder: (context , position){
+                  return _buildPageItem(position);
 
-              }
+                }
+            ),
           ),
 
         ),
@@ -101,63 +110,68 @@ class _Part1PageBodyState extends State<Part1PageBody> {
               shrinkWrap: true,
               itemCount: INFORMATIONS_DATA.length,
               itemBuilder: (context,index){
-                return Container(
-                  margin: EdgeInsets.only(left: Dimensions.width20,right: Dimensions.width20,bottom: Dimensions.height10),
-                  child: Row(
-                    children: [
-                      //image section
-                      Container(
-                        width:Dimensions.listViewImgSize,
-                        height: Dimensions.listViewImgSize,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(Dimensions.radius20),
-                          color: Colors.white38,
-                          image:DecorationImage(
-                              fit: BoxFit.cover,
-                              image:AssetImage(
-                                  INFORMATIONS_DATA[index]["img"] as String
-                              )
-                          ),
-                        ),
-                      ),
-                      //text Container
-                      Expanded(
-                        child: Container(
-                          height: Dimensions.listTextContSize,
+                return  GestureDetector(
+                  onTap: (){
+                    Get.to(()=>Informations());
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(left: Dimensions.width20,right: Dimensions.width20,bottom: Dimensions.height10),
+                    child: Row(
+                      children: [
+                        //image section
+                        Container(
+                          width:Dimensions.listViewImgSize,
+                          height: Dimensions.listViewImgSize,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                             topRight: Radius.circular(Dimensions.radius20),
-                              bottomRight: Radius.circular(Dimensions.radius20),
-                            ),
-                            color: Colors.white,
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.only(left: Dimensions.width10),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                BigText(text :INFORMATIONS_DATA[index]["name"] as String),
-                                SizedBox(height: Dimensions.height10,),
-                                SmallText(text: "voir plus d'informations"),
-                                SizedBox(height: Dimensions.height10,),
-                                Row(
-
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-
-                                    IconAndTextWidget(icon: Icons.date_range,
-                                        text: INFORMATIONS_DATA[index]["date"] as String,
-                                        iconColor: AppColors.iconColor1),
-
-
-                                  ], )
-                              ],
+                            borderRadius: BorderRadius.circular(Dimensions.radius20),
+                            color: Colors.white38,
+                            image:DecorationImage(
+                                fit: BoxFit.cover,
+                                image:AssetImage(
+                                    INFORMATIONS_DATA[index]["img"] as String
+                                )
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                        //text Container
+                        Expanded(
+                          child: Container(
+                            height: Dimensions.listTextContSize,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(Dimensions.radius20),
+                                bottomRight: Radius.circular(Dimensions.radius20),
+                              ),
+                              color: Colors.white,
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.only(left: Dimensions.width10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  BigText(text :INFORMATIONS_DATA[index]["name"] as String),
+                                  SizedBox(height: Dimensions.height10,),
+                                  SmallText(text: "voir plus d'informations"),
+                                  SizedBox(height: Dimensions.height10,),
+                                  Row(
+
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: [
+
+                                      IconAndTextWidget(icon: Icons.date_range,
+                                          text: INFORMATIONS_DATA[index]["date"] as String,
+                                          iconColor: AppColors.iconColor1),
+
+
+                                    ], )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 );
               }),
@@ -204,7 +218,7 @@ class _Part1PageBodyState extends State<Part1PageBody> {
               decoration: BoxDecoration(
                   borderRadius:  BorderRadius.circular(Dimensions.radius30),
                   color: index.isEven?Color(0xFF69c5df):Color(0xFF9294cc),
-                  image : DecorationImage(
+                  image : const DecorationImage(
                       fit: BoxFit.cover,
                       image : AssetImage(
                           "assets/image/img1.jpg"
@@ -220,7 +234,7 @@ class _Part1PageBodyState extends State<Part1PageBody> {
                 decoration: BoxDecoration(
                     borderRadius:  BorderRadius.circular(Dimensions.radius20),
                     color: Colors.white,
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                       color: Color(0xFFe8e8e8),
                       blurRadius: 5.0,
@@ -239,7 +253,7 @@ class _Part1PageBodyState extends State<Part1PageBody> {
                 ),
               child: Container(
                 padding: EdgeInsets.only(top: Dimensions.height15,left: 15, bottom:15),
-                child: AppColumn(text: "meeting sujet",),
+                child: const AppColumn(text: "meeting sujet",),
               ),
 
             ),
