@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:p2_flutter/pages/home/main_page.dart';
-import 'package:p2_flutter/pages/meets/informations.dart';
-import 'package:p2_flutter/pages/meets/meets_detail.dart';
+import 'package:p2_flutter/pages/home/informations.dart';
+import 'package:p2_flutter/pages/home/meets_detail.dart';
+import 'package:p2_flutter/routes/route_helper.dart';
 
 
 
@@ -19,8 +20,10 @@ class MyAppp extends StatelessWidget {
       ),
       home://Informations()
       MainPage() ,
-      //MeetsDetail(),
+      initialRoute: RouteHelper.initial,
+
       //commentaire ajouté
+
     );
   }
 }
