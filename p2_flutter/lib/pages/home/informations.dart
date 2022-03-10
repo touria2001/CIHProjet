@@ -1,13 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:p2_flutter/utils/colors.dart';
 import 'package:p2_flutter/utils/dimensions.dart';
 import 'package:p2_flutter/widgets/app_icon.dart';
 import 'package:p2_flutter/widgets/big_text.dart';
 import 'package:p2_flutter/widgets/exandable_text_widget.dart';
 
+import '../../routes/route_helper.dart';
+import '../constants.dart';
+
 class Informations extends StatelessWidget {
-  const Informations({Key? key}) : super(key: key);
+  final Information info;
+  int _favoriteBtn=0;
+  Informations(this.info);
+  //int get favoriteBtn=>_favoriteBtn;
+ // const Informations({Key? key,required this.info}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,18 +25,35 @@ class Informations extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            //pour eleminer le button de routeur par defaut
+            automaticallyImplyLeading: false,
             toolbarHeight: 70,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [ 
-                AppIcon(icon: Icons.clear),
+                GestureDetector(
+                  onTap:()
+                  {
+                    Get.toNamed(RouteHelper.getInitial());
+                  },
+                    child: AppIcon(icon: Icons.clear)),
+                Container(
+
+                  child: Icon(
+                    Icons.favorite,
+                    size: 40.0
+                    //color:AppColors.mainColor,
+
+                  ),
+                ),
+
               ],
             ),
             bottom: PreferredSize(
               preferredSize: Size.fromHeight(20),
               child: Container(
                 //margin: EdgeInsets.only(left: Dimensions.width20,right:Dimensions.width20),
-               child: Center(child: BigText(text: "Définition",size: Dimensions.font26,),),
+               child: Center(child: BigText(text: info.name,size: Dimensions.font26,),),
                 width: double.maxFinite,
                 padding: EdgeInsets.only(top: 5,bottom:10),
                 decoration:BoxDecoration(
@@ -45,7 +71,7 @@ class Informations extends StatelessWidget {
             expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
               background: Image.asset(
-                "assets/image/img2.jpg",
+                info.img,
                 width: double.maxFinite,
                 fit: BoxFit.cover,
               ),
@@ -56,11 +82,7 @@ class Informations extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  child:ExpandableTextWidget(text:"En France, le premier journal imprimé est La Gazette, créé par Théophraste Renaudot, publiée à Paris entre mai 1631 et le 30 septembre 1915 et qui paraît toujours aujourd'hui sous le nom de Petites Affiches. Avec l'industrialisation de la presse écrite, de grands noms de journaux se sont créés, et le terme a servi à désigner à la fois le support physique de l'information (le journal en papier journal) et la société éditrice : le journal employant des journalistes et des reporters. Les plus anciens quotidiens français encore publiés sont, par ordre d'âge, Le Figaro (1826), Le Progrès (1859), La Dépêche du Midi (1870), La Croix (1880), Ouest-Éclair (1899) puis Ouest France (1944), Les Échos (1904) et L’Humanité "
-                      "En France, le premier journal imprimé est La Gazette, créé par Théophraste Renaudot, publiée à Paris entre mai 1631 et le 30 septembre 1915 et qui paraît toujours aujourd'hui sous le nom de Petites Affiches. Avec l'industrialisation de la presse écrite, de grands noms de journaux se sont créés, et le terme a servi à désigner à la fois le support physique de l'information (le journal en papier journal) et la société éditrice : le journal employant des journalistes et des reporters. Les plus anciens quotidiens français encore publiés sont, par ordre d'âge, Le Figaro (1826), Le Progrès (1859), La Dépêche du Midi (1870), La Croix (1880), Ouest-Éclair (1899) puis Ouest France (1944), Les Échos (1904) et L’Humanité"
-                      "En France, le premier journal imprimé est La Gazette, créé par Théophraste Renaudot, publiée à Paris entre mai 1631 et le 30 septembre 1915 et qui paraît toujours aujourd'hui sous le nom de Petites Affiches. Avec l'industrialisation de la presse écrite, de grands noms de journaux se sont créés, et le terme a servi à désigner à la fois le support physique de l'information (le journal en papier journal) et la société éditrice : le journal employant des journalistes et des reporters. Les plus anciens quotidiens français encore publiés sont, par ordre d'âge, Le Figaro (1826), Le Progrès (1859), La Dépêche du Midi (1870), La Croix (1880), Ouest-Éclair (1899) puis Ouest France (1944), Les Échos (1904) et L’Humanité "
-                      "En France, le premier journal imprimé est La Gazette, créé par Théophraste Renaudot, publiée à Paris entre mai 1631 et le 30 septembre 1915 et qui paraît toujours aujourd'hui sous le nom de Petites Affiches. Avec l'industrialisation de la presse écrite, de grands noms de journaux se sont créés, et le terme a servi à désigner à la fois le support physique de l'information (le journal en papier journal) et la société éditrice : le journal employant des journalistes et des reporters. Les plus anciens quotidiens français encore publiés sont, par ordre d'âge, Le Figaro (1826), Le Progrès (1859), La Dépêche du Midi (1870), La Croix (1880), Ouest-Éclair (1899) puis Ouest France (1944), Les Échos (1904) et L’Humanité"
-                  ) ,
+                  child:ExpandableTextWidget(text:info.descreption ) ,
                   margin: EdgeInsets.only(left: Dimensions.width20,right: Dimensions.width20),
                 )
               ],
@@ -79,23 +101,7 @@ class Informations extends StatelessWidget {
               bottom: Dimensions.height10,
              top: Dimensions.height10,
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                AppIcon(
-                  iconSize: Dimensions.iconSize22,
-                    iconColor:Colors.white,
-                    backroundColor:AppColors.mainColor,
-                    icon: Icons.remove),
 
-                AppIcon(
-                  iconSize: Dimensions.iconSize24,
-                    iconColor:Colors.white,
-                    backroundColor:AppColors.mainColor,
-                    icon: Icons.add),
-
-              ],
-            ),
           ),
           Container(
             height: Dimensions.bottomHeightBar,
@@ -111,15 +117,25 @@ class Informations extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
+
                   padding: EdgeInsets.only(top: Dimensions.height20,bottom: Dimensions.height20,left: Dimensions.width20,right: Dimensions.width20),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(Dimensions.radius20),
                     color: Colors.white,
-                  ),
-                  child: Icon(
-                    Icons.favorite,
-                    color:AppColors.mainColor,
 
+                  ),
+                  child: GestureDetector(
+
+                    // je suis tramper et ajouter Gestu(c'est un Container a l'origine)... et on Tap
+                    onTap: (){
+
+                    },
+                    child: Icon(
+                      Icons.favorite,
+                      size: 30,
+                      color:AppColors.mainColor,
+
+                    ),
                   ),
                 ),
                 Container(

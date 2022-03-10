@@ -21,6 +21,7 @@ class MyAppp extends StatelessWidget {
       home://Informations()
       MainPage() ,
       initialRoute: RouteHelper.initial,
+      getPages: RouteHelper.routes,
 
       //commentaire ajouté
 

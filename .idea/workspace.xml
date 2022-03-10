@@ -23,11 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="963da496-dea6-449c-b0ea-ee75557871a3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/p2_flutter/lib/routes/route_helper.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/p2_flutter/lib/myApp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/p2_flutter/lib/myApp.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p2_flutter/lib/pages/constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/p2_flutter/lib/pages/constants.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p2_flutter/lib/pages/home/informations.dart" beforeDir="false" afterPath="$PROJECT_DIR$/p2_flutter/lib/pages/home/informations.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/p2_flutter/lib/pages/home/meets_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/p2_flutter/lib/pages/home/meets_detail.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/p2_flutter/lib/pages/home/part1_page_body.dart" beforeDir="false" afterPath="$PROJECT_DIR$/p2_flutter/lib/pages/home/part1_page_body.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p2_flutter/lib/routes/route_helper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/p2_flutter/lib/routes/route_helper.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +47,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
@@ -109,25 +112,25 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1646692345304" />
-    <state width="1345" height="211" key="GridCell.Tab.0.bottom" timestamp="1646844518220">
+    <state width="659" height="270" key="GridCell.Tab.0.bottom" timestamp="1646920842118">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="211" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1646844518220" />
-    <state width="1345" height="211" key="GridCell.Tab.0.center" timestamp="1646844518204">
+    <state width="659" height="270" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1646920842118" />
+    <state width="659" height="270" key="GridCell.Tab.0.center" timestamp="1646920842118">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="211" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1646844518204" />
-    <state width="1345" height="211" key="GridCell.Tab.0.left" timestamp="1646844518204">
+    <state width="659" height="270" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1646920842118" />
+    <state width="659" height="270" key="GridCell.Tab.0.left" timestamp="1646920842118">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="211" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1646844518204" />
-    <state width="1345" height="211" key="GridCell.Tab.0.right" timestamp="1646844518204">
+    <state width="659" height="270" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1646920842118" />
+    <state width="659" height="270" key="GridCell.Tab.0.right" timestamp="1646920842118">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="211" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1646844518204" />
-    <state x="-7" y="0" width="916" height="710" key="SettingsEditor" timestamp="1646822419833">
+    <state width="659" height="270" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1646920842118" />
+    <state x="-7" y="0" width="916" height="710" key="SettingsEditor" timestamp="1646848368875">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="-7" y="0" width="916" height="710" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1646822419833" />
+    <state x="-7" y="0" width="916" height="710" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1646848368875" />
   </component>
 </project>

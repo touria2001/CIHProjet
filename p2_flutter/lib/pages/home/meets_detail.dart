@@ -13,6 +13,7 @@ import 'main_page.dart';
 
 class MeetsDetail extends StatelessWidget {
   const MeetsDetail({Key? key}) : super(key: key);
+  
 
   @override
   Widget build(BuildContext context) {
@@ -94,39 +95,37 @@ class MeetsDetail extends StatelessWidget {
         height: Dimensions.bottomHeightBar,
         padding: EdgeInsets.only(top: Dimensions.height30,bottom: Dimensions.height30,left: Dimensions.width20,right: Dimensions.width20),
         decoration: BoxDecoration(
-          color: AppColors.buttonBackgroundColor,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(Dimensions.radius20*2),
-            topRight: Radius.circular(Dimensions.radius20*2),
-          )
+            color: AppColors.buttonBackgroundColor,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(Dimensions.radius20*2),
+              topRight: Radius.circular(Dimensions.radius20*2),
+            )
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [  
-            Container(
-              padding: EdgeInsets.only(top: Dimensions.height20,bottom: Dimensions.height20,left: Dimensions.width20,right: Dimensions.width20),
-              decoration: BoxDecoration(  
-                borderRadius: BorderRadius.circular(Dimensions.radius20),
-                color: Colors.white,
-              ),
-              child: Row(  
-                children: [  
-                  Icon( Icons.remove ,color:AppColors.signColor,),
-                  SizedBox(width: Dimensions.width10/2,),
-                  BigText(text: "0"),
-                  SizedBox(width: Dimensions.width10/2,),
-                  Icon( Icons.add ,color:AppColors.signColor,),
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
 
-                ],
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(top: Dimensions.height20,bottom: Dimensions.height20,left: Dimensions.width20,right: Dimensions.width20),
+            GestureDetector(
+              // on a besoin des conditions sur ce button!!!
+              onTap: ()
+              {
+                Get.snackbar("Intéressé(e)!", "Une notification sera vous envoyez dès le début de la réunion !");
 
-              child: BigText(text: "intéressé(e)",color: Colors.white,size: 15,),
-              decoration: BoxDecoration( 
-                borderRadius: BorderRadius.circular(Dimensions.radius20),
-                color: AppColors.mainColor,
+              },
+              child: GestureDetector(
+                onTap: (){
+
+                },
+                child: Container(
+
+                  padding: EdgeInsets.only(top: Dimensions.height20,bottom: Dimensions.height20,left: Dimensions.width20,right: Dimensions.width20),
+
+                  child: BigText(text: "intéressé(e)",color: Colors.white,size: 15,),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(Dimensions.radius20),
+                    color: AppColors.mainColor,
+                  ),
+                ),
               ),
             )
           ],
