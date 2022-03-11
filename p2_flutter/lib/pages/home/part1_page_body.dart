@@ -43,13 +43,16 @@ class _Part1PageBodyState extends State<Part1PageBody> {
   Future<void> dispose() async {
     pageController.dispose();
   }
+  /******************************************halima has star */
 FirebaseFirestore Firestore = FirebaseFirestore.instance;
 final articlesRef = FirebaseFirestore.instance.collection('articles').withConverter<Article>(
       fromFirestore: (snapshot, _) => Article.fromJson(snapshot.data()!),
       toFirestore: (article, _) => article.toJson(),
     );
+    /******************************************halima has star */
   @override
   Widget build(BuildContext context) {
+    /******************************************halima has stora */
     return  StreamBuilder<QuerySnapshot<Article>>(
         stream: articlesRef.snapshots(),
         builder: (BuildContext context,AsyncSnapshot<QuerySnapshot<Article>> snapshot) {
@@ -71,7 +74,7 @@ final articlesRef = FirebaseFirestore.instance.collection('articles').withConver
 
 final data = snapshot.requireData;
           
-
+/******************************************halima has star */
    return Column(
       children: [
         //slider section
@@ -162,14 +165,18 @@ snapshot.data!.docs.map((DocumentSnapshot document) {
             shrinkWrap: true,
             itemCount:// INFORMATIONS_DATA_List.length,
            // snapshot.data!.docs.length,
+           /******************************************halima has star */
            data.docs.length,
+           /******************************************halima has star */
             itemBuilder: (context, index) {
               Information information = INFORMATIONS_DATA_List[index];
               return GestureDetector(
                onTap: () {
                  print("fdddddddddddddddddd");
                  print(data.docs[index].get('titre'));
+                 /******************************************halima had star */
                  Article article= Article(titre:data.docs[index].get('titre'),date:data.docs[index].get('date'),image:data.docs[index].get('image'));
+                 /******************************************halima has star */
                
                  print(article.date);
                  /* Navigator.push(
