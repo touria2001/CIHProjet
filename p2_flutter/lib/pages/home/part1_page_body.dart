@@ -179,10 +179,10 @@ snapshot.data!.docs.map((DocumentSnapshot document) {
                  /******************************************halima has star */
                
                  print(article.date);
-                 /* Navigator.push(
+                  Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => Informations(information)));*/
+                          builder: (context) => Informations(article)));
                   //Get.toNamed(RouteHelper.getInformations());
                   //Get.to(()=>Informations());
                 },

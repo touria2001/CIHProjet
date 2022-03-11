@@ -14,12 +14,14 @@ import 'package:provider/provider.dart';
 
 import '../provider/favorite_model.dart';
 import 'favorite_list.dart';
-
+import 'article.dart';
 
 class Informations extends StatelessWidget {
   final Information info;
+  final Article article;
   bool isLiked=false;
-  Informations(this.info);
+  
+  const Informations(this.article);
   //int get favoriteBtn=>_favoriteBtn;
  // const Informations({Key? key,required this.info}) : super(key: key);
 
