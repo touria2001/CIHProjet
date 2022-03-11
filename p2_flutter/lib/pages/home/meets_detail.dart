@@ -10,11 +10,15 @@ import 'package:p2_flutter/widgets/exandable_text_widget.dart';
 
 import 'main_page.dart';
 
-
-class MeetsDetail extends StatelessWidget {
+class MeetsDetail extends StatefulWidget {
   const MeetsDetail({Key? key}) : super(key: key);
-  
 
+  @override
+  MeetsDetailState createState() => MeetsDetailState();
+}
+
+class MeetsDetailState extends State<MeetsDetail> {
+  Color _color=AppColors.mainColor;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,43 +27,43 @@ class MeetsDetail extends StatelessWidget {
           //background image
           Positioned(
             left: 0,
-              right: 0,
-              child: Container(
-                  width: double.maxFinite,
-                height: Dimensions.meetsDetailImgSize,
-                decoration: BoxDecoration(
+            right: 0,
+            child: Container(
+              width: double.maxFinite,
+              height: Dimensions.meetsDetailImgSize,
+              decoration: BoxDecoration(
 
                   image: DecorationImage(
                       fit:BoxFit.cover,
-                    image :AssetImage(
-                      "assets/image/img1.jpg"
-                    )
+                      image :AssetImage(
+                          "assets/image/img1.jpg"
+                      )
                   )
-                ),
+              ),
 
-          ),
+            ),
           ),
           //icon widgets
           Positioned(
             top: Dimensions.height45,
             left: Dimensions.width20,
-              right: Dimensions.width20,
-              child:Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GestureDetector(
-                        onTap: (){
-                          Get.to(()=>MainPage());
-                        },
-                        child: AppIcon(icon: Icons.arrow_back_ios)),
-                    AppIcon(icon: Icons.star_border_purple500_outlined,)
-                  ],
-              ),
+            right: Dimensions.width20,
+            child:Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GestureDetector(
+                    onTap: (){
+                      Get.to(()=>MainPage());
+                    },
+                    child: AppIcon(icon: Icons.arrow_back_ios)),
+                AppIcon(icon: Icons.star_border_purple500_outlined,)
+              ],
+            ),
 
           ),
           //introduction
           Positioned(
-            left: 0,
+              left: 0,
               right: 0,
               bottom: 0,
               top: Dimensions.meetsDetailImgSize-20,
@@ -68,7 +72,7 @@ class MeetsDetail extends StatelessWidget {
                 padding: EdgeInsets.only(left: Dimensions.width20,right: Dimensions.width20,top: Dimensions.height20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                     topRight: Radius.circular( Dimensions.radius20),
+                    topRight: Radius.circular( Dimensions.radius20),
                     topLeft: Radius.circular( Dimensions.radius20),
 
                   ),
@@ -114,6 +118,14 @@ class MeetsDetail extends StatelessWidget {
               },
               child: GestureDetector(
                 onTap: (){
+                  if(_color ==AppColors.mainColor)
+                  {
+                    _color= Colors.grey;
+                  }
+                  else
+                  {
+                    _color=AppColors.mainColor;
+                  }
 
                 },
                 child: Container(
@@ -123,7 +135,7 @@ class MeetsDetail extends StatelessWidget {
                   child: BigText(text: "intéressé(e)",color: Colors.white,size: 15,),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(Dimensions.radius20),
-                    color: AppColors.mainColor,
+                    color: _color,
                   ),
                 ),
               ),
@@ -131,6 +143,8 @@ class MeetsDetail extends StatelessWidget {
           ],
         ),
       ),
-    );
+    );;
   }
 }
+
+

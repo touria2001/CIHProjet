@@ -7,20 +7,28 @@ import 'package:p2_flutter/utils/dimensions.dart';
 import 'package:p2_flutter/widgets/app_icon.dart';
 import 'package:p2_flutter/widgets/big_text.dart';
 import 'package:p2_flutter/widgets/exandable_text_widget.dart';
-
+import 'package:like_button/like_button.dart';
 import '../../routes/route_helper.dart';
 import '../constants.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/favorite_model.dart';
+import 'favorite_list.dart';
+
 
 class Informations extends StatelessWidget {
   final Information info;
-  int _favoriteBtn=0;
+  bool isLiked=false;
   Informations(this.info);
   //int get favoriteBtn=>_favoriteBtn;
  // const Informations({Key? key,required this.info}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return MultiProvider(providers: [
+      Provider(create: (context)=>FavoriteModel()),
+    ],
+    child: Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
         slivers: [
@@ -30,21 +38,30 @@ class Informations extends StatelessWidget {
             toolbarHeight: 70,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [ 
+              children: [
                 GestureDetector(
-                  onTap:()
-                  {
-                    Get.toNamed(RouteHelper.getInitial());
-                  },
-                    child: AppIcon(icon: Icons.clear)),
-                Container(
+                    onTap:()
+                    {
+                      Get.toNamed(RouteHelper.getInitial());
+                    },
+                    child: AppIcon(icon: Icons.clear,size: 30.0,)),
+                Row(
+                  children: [
+                    Text("  0  ",),
+                    GestureDetector(
+                      onTap:()
+                      {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>FavoriteListArticles()));
+                      },
+                      child: Icon(
+                        Icons.favorite,
+                        size: 30.0,
+                        //color:AppColors.mainColor,
+                      ),
 
-                  child: Icon(
-                    Icons.favorite,
-                    size: 40.0
-                    //color:AppColors.mainColor,
+                    ),
 
-                  ),
+                  ],
                 ),
 
               ],
@@ -53,7 +70,7 @@ class Informations extends StatelessWidget {
               preferredSize: Size.fromHeight(20),
               child: Container(
                 //margin: EdgeInsets.only(left: Dimensions.width20,right:Dimensions.width20),
-               child: Center(child: BigText(text: info.name,size: Dimensions.font26,),),
+                child: Center(child: BigText(text: info.name,size: Dimensions.font26,),),
                 width: double.maxFinite,
                 padding: EdgeInsets.only(top: 5,bottom:10),
                 decoration:BoxDecoration(
@@ -79,14 +96,14 @@ class Informations extends StatelessWidget {
           ),
           SliverToBoxAdapter(
 
-            child: Column(
-              children: [
-                Container(
-                  child:ExpandableTextWidget(text:info.descreption ) ,
-                  margin: EdgeInsets.only(left: Dimensions.width20,right: Dimensions.width20),
-                )
-              ],
-            )
+              child: Column(
+                children: [
+                  Container(
+                    child:ExpandableTextWidget(text:info.descreption ) ,
+                    margin: EdgeInsets.only(left: Dimensions.width20,right: Dimensions.width20),
+                  )
+                ],
+              )
           ),
         ],
       ),
@@ -96,10 +113,10 @@ class Informations extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.only(
-           left: Dimensions.width20*2.5,
+              left: Dimensions.width20*2.5,
               right: Dimensions.width20*2.5,
               bottom: Dimensions.height10,
-             top: Dimensions.height10,
+              top: Dimensions.height10,
             ),
 
           ),
@@ -128,13 +145,16 @@ class Informations extends StatelessWidget {
 
                     // je suis tramper et ajouter Gestu(c'est un Container a l'origine)... et on Tap
                     onTap: (){
+                      //FavoriteModel.;
 
                     },
-                    child: Icon(
-                      Icons.favorite,
-                      size: 30,
-                      color:AppColors.mainColor,
-
+                    child: LikeButton(
+                      size: 40,
+                      isLiked: isLiked,
+                      padding: EdgeInsets.only(bottom:28),
+                      likeBuilder: (isLiked){
+                        final color = isLiked? Colors.red:AppColors.mainColor;
+                      },
                     ),
                   ),
                 ),
@@ -152,6 +172,7 @@ class Informations extends StatelessWidget {
           ),
         ],
       ),
+    ),
     );
   }
 }
