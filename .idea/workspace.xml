@@ -23,20 +23,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="963da496-dea6-449c-b0ea-ee75557871a3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/p2_flutter/lib/pages/home/favorite_list.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p2_flutter/lib/pages/provider/favorite_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2_flutter/lib/myApp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/p2_flutter/lib/myApp.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2_flutter/lib/pages/constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/p2_flutter/lib/pages/constants.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/p2_flutter/lib/pages/home/informations.dart" beforeDir="false" afterPath="$PROJECT_DIR$/p2_flutter/lib/pages/home/informations.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/p2_flutter/lib/pages/home/meets_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/p2_flutter/lib/pages/home/meets_detail.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2_flutter/lib/pages/home/part1_page_body.dart" beforeDir="false" afterPath="$PROJECT_DIR$/p2_flutter/lib/pages/home/part1_page_body.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2_flutter/lib/routes/route_helper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/p2_flutter/lib/routes/route_helper.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p2_flutter/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/p2_flutter/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p2_flutter/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/p2_flutter/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[SerialNumber@5200ea654e2a9511]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@C:\Users\hp\.android\avd\Pixel_3_API_29.avd]" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -112,25 +113,29 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1646692345304" />
-    <state width="659" height="270" key="GridCell.Tab.0.bottom" timestamp="1646920842118">
+    <state width="659" height="312" key="GridCell.Tab.0.bottom" timestamp="1646962501068">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="659" height="270" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1646920842118" />
-    <state width="659" height="270" key="GridCell.Tab.0.center" timestamp="1646920842118">
+    <state width="659" height="312" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1646962501068" />
+    <state width="659" height="312" key="GridCell.Tab.0.center" timestamp="1646962501067">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="659" height="270" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1646920842118" />
-    <state width="659" height="270" key="GridCell.Tab.0.left" timestamp="1646920842118">
+    <state width="659" height="312" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1646962501067" />
+    <state width="659" height="312" key="GridCell.Tab.0.left" timestamp="1646962501067">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="659" height="270" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1646920842118" />
-    <state width="659" height="270" key="GridCell.Tab.0.right" timestamp="1646920842118">
+    <state width="659" height="312" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1646962501067" />
+    <state width="659" height="312" key="GridCell.Tab.0.right" timestamp="1646962501068">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="659" height="270" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1646920842118" />
+    <state width="659" height="312" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1646962501068" />
     <state x="-7" y="0" width="916" height="710" key="SettingsEditor" timestamp="1646848368875">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="-7" y="0" width="916" height="710" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1646848368875" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1646956303582">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1646956303582" />
   </component>
 </project>
