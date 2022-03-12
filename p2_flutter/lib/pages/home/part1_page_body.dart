@@ -175,7 +175,7 @@ snapshot.data!.docs.map((DocumentSnapshot document) {
                  print("fdddddddddddddddddd");
                  print(data.docs[index].get('titre'));
                  /******************************************halima had star */
-                 Article article= Article(titre:data.docs[index].get('titre'),date:data.docs[index].get('date'),image:data.docs[index].get('image'));
+                 Article article= Article(titre:data.docs[index].get('titre'),date:data.docs[index].get('date'),text:data.docs[index].get('text'),image:data.docs[index].get('image'));
                  /******************************************halima has star */
                
                  print(article.date);
@@ -241,7 +241,9 @@ snapshot.data!.docs.map((DocumentSnapshot document) {
                                     IconAndTextWidget(
                                         icon: Icons.date_range,
                                         text: //information.date,
-                                        data.docs[index].get('date'),
+                                        //data.docs[index].get('date'),
+                                        "gfdg",
+                                        
                                         iconColor: AppColors.iconColor1),
                                   ],
                                 )

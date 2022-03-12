@@ -17,11 +17,11 @@ import 'favorite_list.dart';
 import 'article.dart';
 
 class Informations extends StatelessWidget {
-  final Information info;
+ // final Information info;
   final Article article;
   bool isLiked=false;
   
-  const Informations(this.article);
+   Informations(this.article);
   //int get favoriteBtn=>_favoriteBtn;
  // const Informations({Key? key,required this.info}) : super(key: key);
 
@@ -72,7 +72,7 @@ class Informations extends StatelessWidget {
               preferredSize: Size.fromHeight(20),
               child: Container(
                 //margin: EdgeInsets.only(left: Dimensions.width20,right:Dimensions.width20),
-                child: Center(child: BigText(text: info.name,size: Dimensions.font26,),),
+                child: Center(child: BigText(text: article.titre,size: Dimensions.font26,),),
                 width: double.maxFinite,
                 padding: EdgeInsets.only(top: 5,bottom:10),
                 decoration:BoxDecoration(
@@ -89,8 +89,8 @@ class Informations extends StatelessWidget {
             backgroundColor: AppColors.yellowColor,
             expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                info.img,
+              background: Image.network(
+                article.image,
                 width: double.maxFinite,
                 fit: BoxFit.cover,
               ),
@@ -101,7 +101,7 @@ class Informations extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
-                    child:ExpandableTextWidget(text:info.descreption ) ,
+                    child:ExpandableTextWidget(text:article.text ) ,
                     margin: EdgeInsets.only(left: Dimensions.width20,right: Dimensions.width20),
                   )
                 ],
