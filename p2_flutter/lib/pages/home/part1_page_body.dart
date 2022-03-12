@@ -26,15 +26,6 @@ class _Part1PageBodyState extends State<Part1PageBody> {
   var _currPageValue = 0.0;
   final double _scaleFactor = 0.8;
   final double _height = Dimensions.pageViewContainer;
-  Future<bool> onLikeButtonTapped(bool isLiked) async{
-    /// send your request here
-    // final bool success= await sendRequest();
-
-    /// if failed, you can do nothing
-    // return success? !isLiked:isLiked;
-
-    return !isLiked;
-  }
 
   @override
   void initState() {
@@ -42,7 +33,6 @@ class _Part1PageBodyState extends State<Part1PageBody> {
     pageController.addListener(() {
       setState(() {
         _currPageValue = pageController.page!;
-        // print(" Current Value is"+ _currPageValue.toString());
       });
     });
   }
@@ -54,17 +44,58 @@ class _Part1PageBodyState extends State<Part1PageBody> {
 
   /******************************************halima has star */
   FirebaseFirestore Firestore = FirebaseFirestore.instance;
-/*final articlesRef = FirebaseFirestore.instance.collection('articles').withConverter<Article>(
-      fromFirestore: (snapshot, _) => Article.fromJson(snapshot.data()!),
-      toFirestore: (article, _) => article.toJson(),
-    );*/
+
   /******************************************halima has star */
   @override
   Widget build(BuildContext context) {
     /******************************************halima has stora */
-    return StreamBuilder<QuerySnapshot>(
+    // return StreamBuilder<QuerySnapshot>(
+    //     stream: // articlesRef.snapshots(),
+    //         Firestore.collection('articles').snapshots(),
+    //     builder: (context, snapshot) {
+    //       if (snapshot.hasError) {
+    //         return Center(
+    //           child: Text(snapshot.error.toString()),
+    //         );
+    //       }
+
+    //       if (!snapshot.hasData ||
+    //           snapshot.connectionState == ConnectionState.waiting) {
+    //         return const Center(child: CircularProgressIndicator());
+    //       } else {
+    //         final data = snapshot.requireData;
+
+/******************************************halima has star */
+    return Column(
+      children: [
+        //slider section
+// StreamBuilder<QuerySnapshot>(
+//         stream: // articlesRef.snapshots(),
+//             Firestore.collection('meets').snapshots(),
+//         builder: (context, snapshot) {
+//           if (snapshot.hasError) {
+//             return Center(
+//               child: Text(snapshot.error.toString()),
+//             );
+//           }
+
+//           if (!snapshot.hasData ||
+//               snapshot.connectionState == ConnectionState.waiting) {
+//             return const Center(child: CircularProgressIndicator());
+//           } else {
+//             final data = snapshot.requireData;
+      //  return 
+        GestureDetector(
+          onTap: () {
+            Get.toNamed(RouteHelper.getMeetsDetail());
+            // Get.to(()=>MeetsDetail());
+          },
+          child: Container(
+            // color: Color(0xFF9294cc),
+            height: Dimensions.pageView,
+            child: StreamBuilder<QuerySnapshot>(
         stream: // articlesRef.snapshots(),
-            Firestore.collection('articles').snapshots(),
+            Firestore.collection('meets').snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Center(
@@ -77,83 +108,85 @@ class _Part1PageBodyState extends State<Part1PageBody> {
             return const Center(child: CircularProgressIndicator());
           } else {
             final data = snapshot.requireData;
+            return PageView.builder(
+              
+                controller: pageController,
+                itemCount: data.docs.length,
+                itemBuilder: (context, position) {
+                  return _buildPageItem(position,data.docs[position]);
+                });
+          }})),
+        )
+        // }})
+        ,
 
-/******************************************halima has star */
-            return Column(
-              children: [LikeButton(onTap: (bool s){return onLikeButtonTapped(s);
+        SizedBox(
+          height: Dimensions.height2,
+        ),
 
-              },),
-                //slider section
-                GestureDetector(
-                  onTap: () {
-                    Get.toNamed(RouteHelper.getMeetsDetail());
-                    // Get.to(()=>MeetsDetail());
-                  },
-                  child: Container(
-                    // color: Color(0xFF9294cc),
-                    height: Dimensions.pageView,
-                    child: PageView.builder(
-                        controller: pageController,
-                        itemCount: 5,
-                        itemBuilder: (context, position) {
-                          return _buildPageItem(position);
-                        }),
-                  ),
+        //dots
+        new DotsIndicator(
+          dotsCount: 5,
+          position: _currPageValue,
+          decorator: DotsDecorator(
+            activeColor: AppColors.mainColor,
+            size: const Size.square(9.0),
+            activeSize: const Size(18.0, 9.0),
+            activeShape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0)),
+          ),
+        ),
+
+        //popular text
+        SizedBox(
+          height: Dimensions.height2,
+        ),
+        Container(
+          margin: EdgeInsets.only(left: Dimensions.width30),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              BigText(text: "page home"),
+              SizedBox(
+                width: Dimensions.width5,
+              ),
+              Container(
+                margin: const EdgeInsets.only(bottom: 3),
+                child: BigText(
+                  text: ".",
+                  color: Colors.black26,
                 ),
-
-                SizedBox(
-                  height: Dimensions.height2,
+              ),
+              SizedBox(
+                width: Dimensions.width5,
+              ),
+              Container(
+                margin: const EdgeInsets.only(bottom: 2),
+                child: SmallText(
+                  text: "Les catégories",
+                  color: Colors.black26,
                 ),
+              ),
+            ],
+          ),
+        ),
+        //list of images and informations about diabete
+        StreamBuilder<QuerySnapshot>(
+            stream: // articlesRef.snapshots(),
+                Firestore.collection('articles').snapshots(),
+            builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                return Center(
+                  child: Text(snapshot.error.toString()),
+                );
+              }
 
-                //dots
-                new DotsIndicator(
-                  dotsCount: 5,
-                  position: _currPageValue,
-                  decorator: DotsDecorator(
-                    activeColor: AppColors.mainColor,
-                    size: const Size.square(9.0),
-                    activeSize: const Size(18.0, 9.0),
-                    activeShape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0)),
-                  ),
-                ),
-
-                //popular text
-                SizedBox(
-                  height: Dimensions.height2,
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: Dimensions.width30),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      BigText(text: "page home"),
-                      SizedBox(
-                        width: Dimensions.width5,
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(bottom: 3),
-                        child: BigText(
-                          text: ".",
-                          color: Colors.black26,
-                        ),
-                      ),
-                      SizedBox(
-                        width: Dimensions.width5,
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(bottom: 2),
-                        child: SmallText(
-                          text: "Les catégories",
-                          color: Colors.black26,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                //list of images and informations about diabete
-
-                ListView.builder(
+              if (!snapshot.hasData ||
+                  snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              } else {
+                final data = snapshot.requireData;
+                return ListView.builder(
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount:
@@ -259,14 +292,16 @@ class _Part1PageBodyState extends State<Part1PageBody> {
                           ),
                         ),
                       );
-                    }),
-              ],
-            );
-          }
-        });
+                    });
+              }
+            })
+      ],
+    );
+    //   }
+    // });
   }
 
-  Widget _buildPageItem(int index) {
+  Widget _buildPageItem(int index,QueryDocumentSnapshot<Object?> s) {
     Matrix4 matrix = new Matrix4.identity();
     if (index == _currPageValue.floor()) {
       var currScale = 1 - (_currPageValue - index) * (1 - _scaleFactor);
@@ -341,8 +376,8 @@ class _Part1PageBodyState extends State<Part1PageBody> {
               child: Container(
                 padding: EdgeInsets.only(
                     top: Dimensions.height15, left: 15, bottom: 15),
-                child: const AppColumn(
-                  text: "meeting sujet",
+                child:  AppColumn(
+                  text:s.get('titre') as String,
                 ),
               ),
             ),
