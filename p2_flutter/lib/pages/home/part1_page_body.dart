@@ -14,6 +14,8 @@ import '../../routes/route_helper.dart';
 import '../constants.dart';
 import 'informations.dart';
 import 'article.dart';
+import 'meet.dart';
+import 'meets_detail.dart';
 
 class Part1PageBody extends StatefulWidget {
   const Part1PageBody({Key? key}) : super(key: key);
@@ -47,14 +49,7 @@ class _Part1PageBodyState extends State<Part1PageBody> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        GestureDetector(
-          onTap: () {
-            Get.toNamed(RouteHelper.getMeetsDetail());
-          },
-          child: Container(
-              height: Dimensions.pageView,
-              child: StreamBuilder<QuerySnapshot>(
+      children: [StreamBuilder<QuerySnapshot>(
                   stream: Firestore.collection('meets').snapshots(),
                   builder: (context, snapshot) {
                     if (snapshot.hasError) {
@@ -68,16 +63,49 @@ class _Part1PageBodyState extends State<Part1PageBody> {
                       return const Center(child: CircularProgressIndicator());
                     } else {
                       final data = snapshot.requireData;
-                      return PageView.builder(
+                      return
+        // GestureDetector(
+        //   onTap: () {
+        //    /* Meet meet = Meet(
+        //      titre: data.docs[index].get('titre'),
+        //                       date: "20-03-2022",
+        //                       text: data.docs[index].get('text'),
+        //                       image: data.docs[index].get('image'));*/
+        //     Get.toNamed(RouteHelper.getMeetsDetail());
+        //   },
+        //   child: 
+        Container(
+              height: Dimensions.pageView,
+              child: 
+         PageView.builder(
+                
                           controller: pageController,
                           itemCount: data.docs.length,
                           itemBuilder: (context, position) {
-                            return _buildPageItem(
-                                position, data.docs[position]);
-                          });
-                    }
-                  })),
-        ),
+                            return    GestureDetector(
+          onTap: () {
+            Meet meet = Meet(
+             titre: data.docs[position].get('titre'),
+                              date: data.docs[position].get('date'),
+                              heure: data.docs[position].get('heure'),
+                              lien: data.docs[position].get('lien'),detail:data.docs[position].get('detail'));
+           // Get.toNamed(RouteHelper.getMeetsDetail(meet));
+           Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MeetsDetail(meet)));
+          },
+          child: Container(
+            //  height: Dimensions.pageView,
+              child: 
+                            _buildPageItem(
+                                position, data.docs[position])
+           ));
+            }
+           ))
+                 // ),
+       // )
+        ;}}),
         /*  SizedBox(
           height: Dimensions.height2,
         ),
@@ -292,7 +320,16 @@ class _Part1PageBodyState extends State<Part1PageBody> {
         children: [
           GestureDetector(
             onTap: () {
-              Get.toNamed(RouteHelper.getMeetsDetail());
+              //Get.toNamed(RouteHelper.getMeetsDetail());
+               Meet meet = Meet(
+             titre: s.get('titre'),
+                              date: s.get('date'),
+                              heure: s.get('heure'),
+                              lien: s.get('lien'),detail:s.get('detail'));
+                     Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MeetsDetail(meet)));
             },
             child: Container(
                 height: Dimensions.pageViewContainer,

@@ -7,17 +7,22 @@ import 'package:p2_flutter/widgets/app_column.dart';
 import 'package:p2_flutter/widgets/app_icon.dart';
 import 'package:p2_flutter/widgets/big_text.dart';
 import 'package:p2_flutter/widgets/exandable_text_widget.dart';
-
+import 'meet.dart';
 import 'main_page.dart';
 
 class MeetsDetail extends StatefulWidget {
-  const MeetsDetail({Key? key}) : super(key: key);
+
+  final  Meet meet;
+ 
+  
+   MeetsDetail(this.meet);
 
   @override
   MeetsDetailState createState() => MeetsDetailState();
 }
 
 class MeetsDetailState extends State<MeetsDetail> {
+  
   Color _color=AppColors.mainColor;
   @override
   Widget build(BuildContext context) {
@@ -81,13 +86,13 @@ class MeetsDetailState extends State<MeetsDetail> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AppColumn(text: "meeting sujet",),
+                    AppColumn(text: widget.meet.titre,),
                     SizedBox(height: Dimensions.height20,),
                     BigText(text: "Détails"),
                     // expandable text widget
                     Expanded(
                       child: SingleChildScrollView(
-                          child: ExpandableTextWidget(text: "Le premier journal imprimé connu, un hebdomadaire de quatre pages intitulé « Relation aller Fürnemmen und gedenckwürdigen Historien (« Communication de toutes histoires importantes et mémorables », parfois appelé Die Straßburger Relation), est lancé à Strasbourg en 1605 par Johann Carolus1. Le Post och Inrikes Tidningar, ou POIT, qui se traduit par « Bulletins d'information nationale », est un journal suédois fondé en 1645 par la reine Christine de Suède et est le plus vieux journal encore existant en 2006. Le journal faisait référence en Suède à la fin du xviie siècle et au xviiie siècle. En janvier 2007, la version papier disparait au profit d'une seule version électronique. La dernière édition papier est datée du 29 décembre 2006. ")),
+                          child: ExpandableTextWidget(text: widget.meet.detail)),
                     ),
                   ],
                 ),
