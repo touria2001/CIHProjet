@@ -106,7 +106,7 @@ class _Part1PageBodyState extends State<Part1PageBody> {
                  // ),
        // )
         ;}}),
-        /*  SizedBox(
+          SizedBox(
           height: Dimensions.height2,
         ),
 
@@ -280,7 +280,7 @@ class _Part1PageBodyState extends State<Part1PageBody> {
                       );
                     });
               }
-            })*/
+            })
       ],
     );
     //   }
