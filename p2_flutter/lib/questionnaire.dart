@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'AppColors.dart';
 import 'test.dart';
 import 'myApp.dart';
-import 'package:p2_flutter/pages/meets/meets_detail.dart';
+import 'package:p2_flutter/pages/home/meets_detail.dart';
 
 class Questionnaire extends StatefulWidget {
   const Questionnaire({Key? key}) : super(key: key);
