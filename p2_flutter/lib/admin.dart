@@ -241,7 +241,7 @@ class _AdminState extends State<Admin> {
                         Navigator.push(context, PageRouteBuilder(
                           pageBuilder:
                               (context, animation, secondaryAnimation) {
-                            return Ajouter();
+                            return VoirPlus();
                           },
                         ));
                       },
