@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart'
     as phoneInput;
+
+import 'package:p2_flutter/admin.dart';
+import 'package:p2_flutter/upload.dart';
+import 'package:p2_flutter/questionnaire.dart';
+
 import 'package:p2_flutter/pages/home/informations.dart';
 import 'package:p2_flutter/pages/home/meets_detail.dart';
+
 import 'package:p2_flutter/signUp.dart';
 import 'package:p2_flutter/otp.dart';
+import 'package:p2_flutter/upload.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter_fadein/flutter_fadein.dart';
@@ -13,6 +20,8 @@ import 'AppColors.dart';
 import 'Home.dart';
 import 'test.dart';
 import 'myApp.dart';
+import 'admin.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -42,24 +51,19 @@ class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final Size size= MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-
-      home://MeetsDetail(),
-      //Informations(),// HomeP age(),
-      MyAppp(),
-
-
+      home: // HomePage(),
+          //MyApp()
+          Admin(),
     );
+    // Questionnaire());
   }
-} 
-
-
-
+}
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -94,10 +98,8 @@ class _HomePageState extends State<HomePage> {
                   padding: EdgeInsets.all(30),
                   width: double.infinity,
                   child: Column(children: [
-                    Image.asset(
-                              "assets/image/login.png",
-                        width: 280,
-                        fit: BoxFit.cover),
+                    Image.asset("assets/image/login.png",
+                        width: 280, fit: BoxFit.cover),
                     SizedBox(
                       height: 50,
                     ),

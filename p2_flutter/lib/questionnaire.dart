@@ -77,8 +77,7 @@ class _TestState extends State<Questionnaire> {
                           Container(
                             margin: EdgeInsets.only(bottom: 10, left: 5),
                             width: MediaQuery.of(context).size.width,
-                            child: Text(
-                                "maliak rerre gfgggf hhfhf maliak rerre gfgggf hhfhf maliak rerre gfgggf hhfhffhd",
+                            child: Text("Quel type de diabète avez vous ?",
                                 style: TextStyle(
                                   height: 1.5,
                                   fontSize: 15,
@@ -134,7 +133,7 @@ class _TestState extends State<Questionnaire> {
                             margin: EdgeInsets.only(bottom: 10, left: 5),
                             width: MediaQuery.of(context).size.width,
                             child: Text(
-                                "maliak rerre gfgggf hhfhf maliak rerre gfgggf hhfhf maliak rerre gfgggf hhfhffhd",
+                                "A quel âge, environ, un médecin vous a-t-il dit pour la première fois que vous aviez un diabète ?",
                                 style: TextStyle(
                                   height: 1.5,
                                   fontSize: 15,
@@ -188,7 +187,7 @@ class _TestState extends State<Questionnaire> {
                             margin: EdgeInsets.only(bottom: 10, left: 5),
                             width: MediaQuery.of(context).size.width,
                             child: Text(
-                                "maliak rerre gfgggf hhfhf maliak rerre gfgggf hhfhf maliak rerre gfgggf hhfhffhd",
+                                "Votre diabète a-t-il eu un impact sur votre parcours scolaire",
                                 style: TextStyle(
                                   height: 1.5,
                                   fontSize: 15,
@@ -242,12 +241,11 @@ class _TestState extends State<Questionnaire> {
                           Container(
                             margin: EdgeInsets.only(bottom: 10, left: 5),
                             width: MediaQuery.of(context).size.width,
-                            child: Text(
-                                "maliak rerre gfgggf hhfhf maliak rerre gfgggf hhfhf maliak rerre gfgggf hhfhffhd",
+                            child: Text("Quel est votre poids actuel",
                                 style: TextStyle(
                                   height: 1.5,
                                   fontSize: 15,
-                                  color:AppColors .mainBlacktColor,
+                                  color: AppColors.mainBlacktColor,
                                   fontFamily: 'Lobster',
                                   fontStyle: FontStyle.italic,
                                 )),
@@ -282,11 +280,10 @@ class _TestState extends State<Questionnaire> {
                           TextButton(
                             // style: flatButtonStyle,
                             onPressed: () {
-                                        Navigator.of(context).push(MaterialPageRoute(builder: (context){
-        return Test();
-      }
-      )
-      );
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) {
+                                return Test();
+                              }));
                             },
                             child: Image.asset(
                               "assets/image/retour.png",
@@ -296,11 +293,10 @@ class _TestState extends State<Questionnaire> {
                           TextButton(
                             // style: flatButtonStyle,
                             onPressed: () {
-                                       Navigator.of(context).push(MaterialPageRoute(builder: (context){
-        return MyAppp();
-      }
-      )
-      );
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) {
+                                return MyAppp();
+                              }));
                             },
                             child: Image.asset(
                               "assets/image/suivant.png",
