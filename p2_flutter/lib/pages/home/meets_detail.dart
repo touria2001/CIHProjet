@@ -86,7 +86,7 @@ class MeetsDetailState extends State<MeetsDetail> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AppColumn(text: widget.meet.titre,),
+                    AppColumn(text: widget.meet.titre,date:widget.meet.date,heure: widget.meet.heure,lien: widget.meet.lien),
                     SizedBox(height: Dimensions.height20,),
                     BigText(text: "Détails"),
                     // expandable text widget

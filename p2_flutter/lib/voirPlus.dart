@@ -62,7 +62,7 @@ class _VoirPlusState extends State<VoirPlus> {
                           onPressed: () {
                             print(data.docs[index].get('rep1'));
                           },
-                          child: Text('tap'));
+                          child: Text(data.docs[index].get('rep1')));
                     },
                   ),
 

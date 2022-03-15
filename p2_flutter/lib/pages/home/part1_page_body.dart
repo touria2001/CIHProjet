@@ -373,6 +373,9 @@ class _Part1PageBodyState extends State<Part1PageBody> {
                     top: Dimensions.height15, left: 15, bottom: 15),
                 child: AppColumn(
                   text: s.get('titre') as String,
+                  date: s.get('date') as String,
+                  heure: s.get('heure') as String,
+                  lien: s.get('lien') as String
                 ),
               ),
             ),

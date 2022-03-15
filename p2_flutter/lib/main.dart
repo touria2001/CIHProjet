@@ -37,9 +37,11 @@ void main() async {
 
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: isPuttingNumber as bool
+    home:
+     isPuttingNumber as bool
         ? (isLogged as bool
             ? Home()
+            
             : (isSubscribed as bool
                 ? Test()
                 : singUpState(prefs.getString("numberPhone") as String)))
