@@ -9,6 +9,7 @@ import 'package:p2_flutter/widgets/big_text.dart';
 import 'package:p2_flutter/widgets/exandable_text_widget.dart';
 import 'meet.dart';
 import 'main_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MeetsDetail extends StatefulWidget {
 
@@ -137,7 +138,18 @@ class MeetsDetailState extends State<MeetsDetail> {
 
                   padding: EdgeInsets.only(top: Dimensions.height20,bottom: Dimensions.height20,left: Dimensions.width20,right: Dimensions.width20),
 
-                  child: BigText(text: "intéressé(e)",color: Colors.white,size: 15,),
+                  child:GestureDetector(child: BigText(text: "accéder au meet",color: Colors.white,size: 15,),
+                  onTap: () async{
+    
+    
+  
+  if (await canLaunch(widget.meet.lien)) {
+    await launch(widget.meet.lien);
+  } else {
+    throw 'Could not launch $widget.meet.lien';
+  
+}
+  },),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(Dimensions.radius20),
                     color: _color,

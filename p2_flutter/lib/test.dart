@@ -13,13 +13,20 @@ class Test extends StatefulWidget {
 class _TestState extends State<Test> {
   late String q2;
 
-  addData(String v, String q) async {
+  String question1 ="";
+  String question2 ="";
+  String question3 ="";
+  String question4 ="";
+
+  addData() async {
     CollectionReference usersRef =
         FirebaseFirestore.instance.collection("questionnaire");
-    //usersRef.add({: v});
-    print(
-        "=========================================================================");
-    usersRef.doc(q).set({q: v});
+
+    usersRef.doc("123456").set({"question1":question1,
+    "question2":question2,
+    "question3":question3,
+    "question4":question4,
+    });
   }
 
   @override
@@ -100,7 +107,8 @@ class _TestState extends State<Test> {
                                   hintText: "ecrire ici",
                                 ),
                                 onChanged: (value) {
-                                  addData(value, "question1");
+                                  // addData(value, "question1");
+                                  question1 = value;
                                 },
                               )),
                         ],
@@ -155,7 +163,8 @@ class _TestState extends State<Test> {
                                   border: InputBorder.none,
                                 ),
                                 onChanged: (value) {
-                                  addData(value, "question2");
+                                  // addData(value, "question2");
+                                  question2 = value;
                                 },
                               )),
                         ],
@@ -209,7 +218,8 @@ class _TestState extends State<Test> {
                                   border: InputBorder.none,
                                 ),
                                 onChanged: (value) {
-                                  addData(value, "question3");
+                                  // addData(value, "question3");
+                                  question3 =value;
                                 },
                               )),
                         ],
@@ -264,7 +274,8 @@ class _TestState extends State<Test> {
                                   border: InputBorder.none,
                                 ),
                                 onChanged: (value) {
-                                  addData(value, "question4");
+                                  // addData(value, "question4");
+                                  question4 = value;
                                 },
                               )),
                         ],
@@ -274,6 +285,7 @@ class _TestState extends State<Test> {
                           alignment: Alignment.bottomRight,
                           child: TextButton(
                             onPressed: () {
+                              addData();
                               Navigator.of(context).push(MaterialPageRoute(builder: (context){
         return Questionnaire();
       }
