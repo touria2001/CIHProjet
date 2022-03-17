@@ -37,15 +37,15 @@ void main() async {
 
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home:
-     isPuttingNumber as bool
-        ? (isLogged as bool
-            ? Home()
+    home:Admin()
+    //  isPuttingNumber as bool
+    //     ? (isLogged as bool
+    //         ? Home()
             
-            : (isSubscribed as bool
-                ? Test()
-                : singUpState(prefs.getString("numberPhone") as String)))
-        : MyApp(),
+    //         : (isSubscribed as bool
+    //             ? Test(prefs.getString("numberPhone") as String)
+    //             : singUpState(prefs.getString("numberPhone") as String)))
+    //     : MyApp(),
   ));
 } //class without interaction
 

@@ -5,7 +5,8 @@ import 'questionnaire.dart';
 import 'AppColors.dart';
 
 class Test extends StatefulWidget {
-  const Test({Key? key}) : super(key: key);
+  final String phone;
+  const Test(this.phone);
   @override
   _TestState createState() => _TestState();
 }
@@ -22,7 +23,7 @@ class _TestState extends State<Test> {
     CollectionReference usersRef =
         FirebaseFirestore.instance.collection("questionnaire");
 
-    usersRef.doc("123456").set({"question1":question1,
+    usersRef.doc("1234").set({"question1":question1,
     "question2":question2,
     "question3":question3,
     "question4":question4,
@@ -287,7 +288,7 @@ class _TestState extends State<Test> {
                             onPressed: () {
                               addData();
                               Navigator.of(context).push(MaterialPageRoute(builder: (context){
-        return Questionnaire();
+        return Questionnaire(widget.phone);
       }
       )
       );

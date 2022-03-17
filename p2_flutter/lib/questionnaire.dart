@@ -6,7 +6,8 @@ import 'myApp.dart';
 import 'package:p2_flutter/pages/home/meets_detail.dart';
 
 class Questionnaire extends StatefulWidget {
-  const Questionnaire({Key? key}) : super(key: key);
+  final String phone;
+  const Questionnaire(this.phone);
   @override
   _TestState createState() => _TestState();
 }
@@ -294,7 +295,7 @@ class _TestState extends State<Questionnaire> {
                             onPressed: () {
                               Navigator.of(context)
                                   .push(MaterialPageRoute(builder: (context) {
-                                return Test();
+                                return Test(widget.phone);
                               }));
                             },
                             child: Image.asset(

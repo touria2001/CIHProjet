@@ -27,6 +27,7 @@ class _singUpState extends State<singUpState> {
   var selectedDate;
   String? sexe;
   String? person ;
+  
 
 
   GlobalKey<FormState> formstate = new GlobalKey<FormState>();
@@ -41,7 +42,7 @@ class _singUpState extends State<singUpState> {
       setData();
       preferences.setBool("isSubscribed", true);
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context){
-        return Test();
+        return Test(widget.phone);
       }
       )
       );

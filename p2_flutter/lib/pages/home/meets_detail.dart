@@ -62,7 +62,7 @@ class MeetsDetailState extends State<MeetsDetail> {
                       Get.to(()=>MainPage());
                     },
                     child: AppIcon(icon: Icons.arrow_back_ios)),
-                AppIcon(icon: Icons.star_border_purple500_outlined,)
+                // AppIcon(icon: Icons.star_border_purple500_outlined,)
               ],
             ),
 

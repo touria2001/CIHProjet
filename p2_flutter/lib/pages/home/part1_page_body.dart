@@ -49,6 +49,7 @@ class _Part1PageBodyState extends State<Part1PageBody> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      
       children: [StreamBuilder<QuerySnapshot>(
                   stream: Firestore.collection('meets').snapshots(),
                   builder: (context, snapshot) {
@@ -64,16 +65,6 @@ class _Part1PageBodyState extends State<Part1PageBody> {
                     } else {
                       final data = snapshot.requireData;
                       return
-        // GestureDetector(
-        //   onTap: () {
-        //    /* Meet meet = Meet(
-        //      titre: data.docs[index].get('titre'),
-        //                       date: "20-03-2022",
-        //                       text: data.docs[index].get('text'),
-        //                       image: data.docs[index].get('image'));*/
-        //     Get.toNamed(RouteHelper.getMeetsDetail());
-        //   },
-        //   child: 
         Container(
               height: Dimensions.pageView,
               child: 
@@ -89,7 +80,7 @@ class _Part1PageBodyState extends State<Part1PageBody> {
                               date: data.docs[position].get('date'),
                               heure: data.docs[position].get('heure'),
                               lien: data.docs[position].get('lien'),detail:data.docs[position].get('detail'));
-           // Get.toNamed(RouteHelper.getMeetsDetail(meet));
+          
            Navigator.push(
                               context,
                               MaterialPageRoute(
