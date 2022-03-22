@@ -9,7 +9,7 @@ import 'package:p2_flutter/widgets/app_column.dart';
 import 'package:p2_flutter/widgets/big_text.dart';
 import 'package:p2_flutter/widgets/icon_and_text_widget.dart';
 import 'package:p2_flutter/widgets/small_text.dart';
-
+import '../constants.dart';
 import '../../routes/route_helper.dart';
 import '../constants.dart';
 import 'informations.dart';
@@ -49,55 +49,55 @@ class _Part1PageBodyState extends State<Part1PageBody> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      
-      children: [StreamBuilder<QuerySnapshot>(
-                  stream: Firestore.collection('meets').snapshots(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasError) {
-                      return Center(
-                        child: Text(snapshot.error.toString()),
-                      );
-                    }
+      children: [
+        // StreamBuilder<QuerySnapshot>(
+        //     stream: Firestore.collection('meets').snapshots(),
+        //     builder: (context, snapshot) {
+        //       if (snapshot.hasError) {
+        //         return Center(
+        //           child: Text(snapshot.error.toString()),
+        //         );
+        //       }
 
-                    if (!snapshot.hasData ||
-                        snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(child: CircularProgressIndicator());
-                    } else {
-                      final data = snapshot.requireData;
-                      return
-        Container(
-              height: Dimensions.pageView,
-              child: 
-         PageView.builder(
-                
-                          controller: pageController,
-                          itemCount: data.docs.length,
-                          itemBuilder: (context, position) {
-                            return    GestureDetector(
-          onTap: () {
-            Meet meet = Meet(
-             titre: data.docs[position].get('titre'),
-                              date: data.docs[position].get('date'),
-                              heure: data.docs[position].get('heure'),
-                              lien: data.docs[position].get('lien'),detail:data.docs[position].get('detail'));
-          
-           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => MeetsDetail(meet)));
-          },
-          child: Container(
-            //  height: Dimensions.pageView,
-              child: 
-                            _buildPageItem(
-                                position, data.docs[position])
-           ));
-            }
-           ))
-                 // ),
-       // )
-        ;}}),
-          SizedBox(
+        //       if (!snapshot.hasData ||
+        //           snapshot.connectionState == ConnectionState.waiting) {
+        //         return const Center(child: CircularProgressIndicator());
+        //       } else {
+        //         final data = snapshot.requireData;
+               // return
+                 Container(
+                        height: Dimensions.pageView,
+                        child: PageView.builder(
+                            controller: pageController,
+                            itemCount: INFORMATIONS_DATA.length,
+                            itemBuilder: (context, position) {
+                              return GestureDetector(
+                                  onTap: () {
+                                    Meet meet = Meet(
+                                        titre: data.docs[position].get('titre'),
+                                        date: data.docs[position].get('date'),
+                                        heure: data.docs[position].get('heure'),
+                                        lien: data.docs[position].get('lien'),
+                                        detail:
+                                            data.docs[position].get('detail'));
+
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                MeetsDetail(meet)));
+                                  },
+                                  child: Container(
+                                        height: Dimensions.pageView,
+                                      child: _buildPageItem(
+                                          position, data.docs[position])));
+                            })),
+                    // ),
+                    // )
+                    
+              //}
+          //  }),
+        SizedBox(
           height: Dimensions.height2,
         ),
 
@@ -312,15 +312,14 @@ class _Part1PageBodyState extends State<Part1PageBody> {
           GestureDetector(
             onTap: () {
               //Get.toNamed(RouteHelper.getMeetsDetail());
-               Meet meet = Meet(
-             titre: s.get('titre'),
-                              date: s.get('date'),
-                              heure: s.get('heure'),
-                              lien: s.get('lien'),detail:s.get('detail'));
-                     Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => MeetsDetail(meet)));
+              Meet meet = Meet(
+                  titre: s.get('titre'),
+                  date: s.get('date'),
+                  heure: s.get('heure'),
+                  lien: s.get('lien'),
+                  detail: s.get('detail'));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MeetsDetail(meet)));
             },
             child: Container(
                 height: Dimensions.pageViewContainer,
@@ -333,7 +332,7 @@ class _Part1PageBodyState extends State<Part1PageBody> {
                         fit: BoxFit.cover,
                         image: AssetImage("assets/image/nouv.png")))),
           ),
-          Align( 
+          Align(
             alignment: Alignment.bottomCenter,
             child: Container(
               height: Dimensions.pageViewTextContainer,
@@ -363,11 +362,10 @@ class _Part1PageBodyState extends State<Part1PageBody> {
                 padding: EdgeInsets.only(
                     top: Dimensions.height15, left: 15, bottom: 15),
                 child: AppColumn(
-                  text: s.get('titre') as String,
-                  date: s.get('date') as String,
-                  heure: s.get('heure') as String,
-                  lien: s.get('lien') as String
-                ),
+                    text: s.get('titre') as String,
+                    date: s.get('date') as String,
+                    heure: s.get('heure') as String,
+                    lien: s.get('lien') as String),
               ),
             ),
           ),

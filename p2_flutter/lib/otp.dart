@@ -1,11 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:p2_flutter/AppColors.dart';
+import 'package:p2_flutter/quastionClass.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 import 'package:p2_flutter/Home.dart';
 import 'package:p2_flutter/signUp.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:p2_flutter/questionnaire.dart';
 
 class OTPScreen extends StatefulWidget {
   final String phone;
@@ -42,7 +43,7 @@ class _OTPScreenState extends State<OTPScreen> {
                 Navigator.pushAndRemoveUntil(
                     context,
                     
-                    MaterialPageRoute(builder: (context) =>Home()),
+                    MaterialPageRoute(builder: (context) =>Questionnaire(widget.phone)),
                     (route) => false);
               }
             }
@@ -125,7 +126,7 @@ class _OTPScreenState extends State<OTPScreen> {
                 Navigator.pushAndRemoveUntil(
                     context,
                     
-                    MaterialPageRoute(builder: (context) => Home()),
+                    MaterialPageRoute(builder: (context) => Questionnaire(widget.phone)),
                     (route) => false);
               }
                       }

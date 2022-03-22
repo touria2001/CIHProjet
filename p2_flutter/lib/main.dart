@@ -37,15 +37,14 @@ void main() async {
 
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home:Admin()
-    //  isPuttingNumber as bool
-    //     ? (isLogged as bool
-    //         ? Home()
+    home:   isPuttingNumber as bool
+        ? (isLogged as bool
+            ? Home()
             
-    //         : (isSubscribed as bool
-    //             ? Test(prefs.getString("numberPhone") as String)
-    //             : singUpState(prefs.getString("numberPhone") as String)))
-    //     : MyApp(),
+            : (isSubscribed as bool
+                ? Test(prefs.getString("numberPhone") as String)
+                : singUpState(prefs.getString("numberPhone") as String)))
+        : MyApp(),
   ));
 } //class without interaction
 
@@ -59,9 +58,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: // HomePage(),
-          //MyApp()
-          Admin(),
+      home:  HomePage(),
+        //  MyApp()
+         // Admin(),
     );
     // Questionnaire());
   }
