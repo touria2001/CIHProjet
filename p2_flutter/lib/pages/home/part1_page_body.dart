@@ -69,28 +69,28 @@ class _Part1PageBodyState extends State<Part1PageBody> {
                         height: Dimensions.pageView,
                         child: PageView.builder(
                             controller: pageController,
-                            itemCount: INFORMATIONS_DATA.length,
+                            itemCount: INFORMATIONS_DATA_List.length,
                             itemBuilder: (context, position) {
                               return GestureDetector(
                                   onTap: () {
-                                    Meet meet = Meet(
-                                        titre: data.docs[position].get('titre'),
-                                        date: data.docs[position].get('date'),
-                                        heure: data.docs[position].get('heure'),
-                                        lien: data.docs[position].get('lien'),
-                                        detail:
-                                            data.docs[position].get('detail'));
+                                    // Meet meet = Meet(
+                                    //     titre: data.docs[position].get('titre'),
+                                    //     date: data.docs[position].get('date'),
+                                    //     heure: data.docs[position].get('heure'),
+                                    //     lien: data.docs[position].get('lien'),
+                                    //     detail:
+                                    //         data.docs[position].get('detail'));
 
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                MeetsDetail(meet)));
+                                    // Navigator.push(
+                                    //     context,
+                                    //     MaterialPageRoute(
+                                    //         builder: (context) =>
+                                    //             MeetsDetail(meet)));
                                   },
                                   child: Container(
                                         height: Dimensions.pageView,
                                       child: _buildPageItem(
-                                          position, data.docs[position])));
+                                          position)));
                             })),
                     // ),
                     // )
@@ -278,7 +278,7 @@ class _Part1PageBodyState extends State<Part1PageBody> {
     // });
   }
 
-  Widget _buildPageItem(int index, QueryDocumentSnapshot<Object?> s) {
+  Widget _buildPageItem(int index) {
     Matrix4 matrix = new Matrix4.identity();
     if (index == _currPageValue.floor()) {
       var currScale = 1 - (_currPageValue - index) * (1 - _scaleFactor);
@@ -313,11 +313,11 @@ class _Part1PageBodyState extends State<Part1PageBody> {
             onTap: () {
               //Get.toNamed(RouteHelper.getMeetsDetail());
               Meet meet = Meet(
-                  titre: s.get('titre'),
-                  date: s.get('date'),
-                  heure: s.get('heure'),
-                  lien: s.get('lien'),
-                  detail: s.get('detail'));
+                  titre: INFORMATIONS_DATA_List[index].name,
+                  date:INFORMATIONS_DATA_List[index].date,
+                  heure:"voire plus de détails",
+                  lien: "sujet",
+                  detail: INFORMATIONS_DATA_List[index].descreption);
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => MeetsDetail(meet)));
             },
@@ -362,10 +362,11 @@ class _Part1PageBodyState extends State<Part1PageBody> {
                 padding: EdgeInsets.only(
                     top: Dimensions.height15, left: 15, bottom: 15),
                 child: AppColumn(
-                    text: s.get('titre') as String,
-                    date: s.get('date') as String,
-                    heure: s.get('heure') as String,
-                    lien: s.get('lien') as String),
+                    text: INFORMATIONS_DATA_List[index].name as String,
+                    date: INFORMATIONS_DATA_List[index].date as String,
+                    heure: "plus de détails",
+                    lien: "sujet"
+                    ),
               ),
             ),
           ),

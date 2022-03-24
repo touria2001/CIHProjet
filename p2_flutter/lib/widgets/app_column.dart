@@ -44,7 +44,7 @@ class AppColumn extends StatelessWidget {
   
 }
   },
-  child: SmallText(text: "lien vers le meet"),
+  child: SmallText(text: "sujet"),
 ),
             
   
