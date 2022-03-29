@@ -1,7 +1,10 @@
 import 'dart:ffi';
+import 'package:get/get.dart';
+
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:p2_flutter/admin.dart';
 import 'package:p2_flutter/quastionClass.dart';
 import 'package:p2_flutter/utils/colors.dart' as color;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -48,10 +51,18 @@ class _VoirPlusState extends State<VoirPlus> {
                 height: 230,
                 child: Column(children: [
                   Row(children: [
-                    Icon(
-                      Icons.arrow_back_ios,
+                    IconButton(
+                     icon: Icon(Icons.arrow_back_ios,
                       size: 20,
-                      color: color.AppColors.mainBlacktColor,
+                      color: color.AppColors.mainBlacktColor,),onPressed: (){
+                       //Navigator.of(context).pop();
+                      setState(() {
+                        Get.to(()=>Admin());
+                      });
+
+                    },
+
+
                     ),
                     Expanded(child: Container()),
                   ]),

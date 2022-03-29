@@ -1,7 +1,9 @@
 import 'dart:io' as File;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:p2_flutter/upload.dart';
+import 'package:p2_flutter/ajouter.dart';
+import 'package:p2_flutter/quastionClass.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
@@ -9,6 +11,8 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:p2_flutter/utils/colors.dart' as color;
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:p2_flutter/voirPlus.dart';
+import 'package:p2_flutter/searchWidget.dart';
+import 'package:p2_flutter/allQuestion.dart'
 
 class Admin extends StatefulWidget {
   Admin({Key? key}) : super(key: key);
@@ -19,7 +23,16 @@ class Admin extends StatefulWidget {
 
 class _AdminState extends State<Admin> {
   String? imageUrl;
-  List question = [
+  String query = '';
+  late List<Question> questions;
+   @override
+  void initState(){
+    super.initState();
+
+    questions = allQuestion.cast<Question>();
+  }
+  
+  List question1 = [
     {
       "name": "Quel type de diabète avez vous ?",
       "screen": "voir plus",
@@ -190,7 +203,8 @@ class _AdminState extends State<Admin> {
                             ),
                           ),
                           Container(
-                              child: Icon(Icons.search),
+                            // buildSearch(),
+                            /*child: Icon(Icons.search),
                               padding: EdgeInsets.only(right: 230),
                               margin: EdgeInsets.only(top: 20, left: 10),
                               width: double.infinity,
@@ -198,7 +212,8 @@ class _AdminState extends State<Admin> {
                               decoration: BoxDecoration(
                                 color: color.AppColors.mainColor3,
                                 borderRadius: BorderRadius.circular(10),
-                              ))
+                              )*/
+                          )
                         ],
                       ),
                     )
@@ -252,7 +267,7 @@ class _AdminState extends State<Admin> {
                                 color: color.AppColors.signColor,
                                 thickness: 1,
                               ),
-                          itemCount: question.length,
+                          itemCount: question1.length,
                           itemBuilder: (context, i) {
                             return Container(
                               height: 130,
@@ -277,13 +292,13 @@ class _AdminState extends State<Admin> {
                               ),
                               child: ListTile(
                                 title: Text(
-                                  "${question[i]['name']}",
+                                  "${question1[i]['name']}",
                                   style: TextStyle(
                                       fontSize: 17,
                                       fontWeight: FontWeight.w500),
                                 ),
                                 subtitle: Text(
-                                  "${question[i]['screen']}",
+                                  "${question1[i]['screen']}",
                                   style: TextStyle(
                                       color: color.AppColors.iconColor2),
                                 ),
@@ -319,7 +334,7 @@ class _AdminState extends State<Admin> {
                                             Colors.white
                                           ],
                                         ))),
-                                trailing: Text("${question[i]['cpu']}"),
+                                trailing: Text("${question1[i]['cpu']}"),
                               ),
                             );
                           }),
@@ -330,6 +345,10 @@ class _AdminState extends State<Admin> {
             ),
           )),
     );
+    // Widget buildSearch() => SearchWidget(
+    //     text: query,
+    //     //onChanged: searchQuestion,
+    //     hintText: 'Chercher une question ');
   }
 
   uploadImage() async {
@@ -356,4 +375,7 @@ class _AdminState extends State<Admin> {
       print("Accordez les permissions et réusseillez!");
     }
   }
+
+  // methode searchQuestion ***************************
+  // void searchQuestion(String query) {final founds = question.where((found){}).toList() }
 }

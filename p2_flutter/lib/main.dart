@@ -4,7 +4,7 @@ import 'package:intl_phone_number_input/intl_phone_number_input.dart'
     as phoneInput;
 
 import 'package:p2_flutter/admin.dart';
-import 'package:p2_flutter/upload.dart';
+import 'package:p2_flutter/ajouter.dart';
 import 'package:p2_flutter/questionnaire.dart';
 
 import 'package:p2_flutter/pages/home/informations.dart';
@@ -12,7 +12,7 @@ import 'package:p2_flutter/pages/home/meets_detail.dart';
 
 import 'package:p2_flutter/signUp.dart';
 import 'package:p2_flutter/otp.dart';
-import 'package:p2_flutter/upload.dart';
+import 'package:p2_flutter/ajouter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter_fadein/flutter_fadein.dart';
