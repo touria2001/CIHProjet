@@ -38,8 +38,9 @@ class _VoirPlusState extends State<VoirPlus> {
 
             return Scaffold(
               drawer: Drawer(),
-              body: Container(
-                padding: const EdgeInsets.only(
+              body:
+               Container(
+                /*padding: const EdgeInsets.only(
                   top: 50,
                   left: 10,
                   right: 20,
@@ -54,20 +55,21 @@ class _VoirPlusState extends State<VoirPlus> {
                       color: color.AppColors.mainBlacktColor,
                     ),
                     Expanded(child: Container()),
-                  ]),
-                  ListView.builder(
+                  ]),*/
+                 child: ListView.builder(
                     itemCount: data.docs.length,
                     itemBuilder: (context, index) {
                       return ElevatedButton(
                           onPressed: () {
-                            print(data.docs[index].get('rep1'));
+                            print(data.docs[index].get('question1'));
                           },
-                          child: Text(data.docs[index].get('rep1')));
+                          /*******************hona */
+                          child: Text(data.docs[index].get('question1')));
                     },
                   ),
 
                   //ajouter ici __________________________________________________________
-                ]),
+               // ]),
               ),
             );
           }

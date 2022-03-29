@@ -315,7 +315,7 @@ class _Part1PageBodyState extends State<Part1PageBody> {
               Meet meet = Meet(
                   titre: INFORMATIONS_DATA_List[index].name,
                   date:INFORMATIONS_DATA_List[index].date,
-                  heure:"voire plus de détails",
+                  heure:"08:00",
                   lien: "sujet",
                   detail: INFORMATIONS_DATA_List[index].descreption);
               Navigator.push(context,
@@ -364,7 +364,7 @@ class _Part1PageBodyState extends State<Part1PageBody> {
                 child: AppColumn(
                     text: INFORMATIONS_DATA_List[index].name as String,
                     date: INFORMATIONS_DATA_List[index].date as String,
-                    heure: "plus de détails",
+                    heure: "08:00",
                     lien: "sujet"
                     ),
               ),

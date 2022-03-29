@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'questionnaire.dart';
 import 'AppColors.dart';
 
+
 class Test extends StatefulWidget {
   final String phone;
   const Test(this.phone);
@@ -32,16 +33,58 @@ class _TestState extends State<Test> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColors.mainColor,
-          title: Text("Questionnaire"),
-        ),
-        body: Container(
-            margin: EdgeInsets.only(top: 20, left: 5, right: 5),
-            child: SingleChildScrollView(
-              child: Column(
+    return Scaffold(   
+        body:  Column(
                 children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.arrow_back_ios,
+                          size: 20,
+                          color:Color(0xFF332d2b) ,
+                        ),
+                        Expanded(child: Container()),
+                        Text("QUESTIONNAIRE"),
+                        Icon(
+                          Icons.info_outline,
+                          size: 20,
+                        )
+                      ],
+                    ),
+                    Container( margin: EdgeInsets.only(top: 20, right: 70, bottom: 10),
+                    //****************************************************** */
+                      child: Column(
+                        children: [
+                          Text("Réponses du Qestionnaire",
+                              style: TextStyle(
+                                  //fontWeight: FontWeight.bold,
+                                  fontSize: 25,
+                                  color: Color(0xFF332d2b))),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(right: 120, left: 5),
+                            child: Text(
+                              "Accessible que par l'admin ",
+                              style:
+                                  TextStyle(color: Color(0xFF332d2b)),
+                            ),
+                          ), Container(
+                              child: Icon(Icons.search),
+                              padding: EdgeInsets.only(right: 230),
+                              margin: EdgeInsets.only(top: 20, left: 10),
+                              width: double.infinity,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                color:Color(0xFF332d2b),
+                                borderRadius: BorderRadius.circular(10),
+                              ))
+                        ],
+                      ),
+
+
+                    ),
                   Container(
                       margin: EdgeInsets.only(bottom: 12),
                       child: Text(
@@ -300,6 +343,6 @@ class _TestState extends State<Test> {
                           ))),
                 ],
               ),
-            )));
+            );
   }
 }
