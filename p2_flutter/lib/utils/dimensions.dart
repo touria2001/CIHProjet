@@ -3,6 +3,8 @@ class Dimensions{
   static double screenHeight=Get.context!.height;
   static double screenWidth=Get.context!.width;
 
+  static double ouissal=screenHeight/3;
+
   static double pageView=screenHeight/2.1;
   static double pageViewContainer=screenHeight/3.15;
   static double pageViewTextContainer=screenHeight/5.70;
