@@ -18,12 +18,12 @@ class MyAppp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home://Informations()
+      home:
       MainPage() ,
       initialRoute: RouteHelper.initial,
       getPages: RouteHelper.routes,
 
-      //commentaire ajouté
+     
 
     );
   }

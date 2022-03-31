@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:p2_flutter/AppColors.dart';
 import 'package:p2_flutter/quastionClass.dart';
 import 'package:pinput/pin_put/pin_put.dart';
-import 'package:p2_flutter/Home.dart';
+
 import 'package:p2_flutter/signUp.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:p2_flutter/questionnaire.dart';
+import 'myApp.dart';
 
 class OTPScreen extends StatefulWidget {
   final String phone;
@@ -39,11 +40,13 @@ class _OTPScreenState extends State<OTPScreen> {
                     MaterialPageRoute(builder: (context) => singUpState(widget.phone)),
                     (route) => false);
               } else {
+                  preferences.setBool("isPuttingNumber", true);
                  preferences.setBool("isLogged",true);
                 Navigator.pushAndRemoveUntil(
                     context,
                     
-                    MaterialPageRoute(builder: (context) =>Questionnaire(widget.phone)),
+                    // MaterialPageRoute(builder: (context) =>Questionnaire(widget.phone)),
+                     MaterialPageRoute(builder: (context) =>MyAppp()),
                     (route) => false);
               }
             }
@@ -122,11 +125,13 @@ class _OTPScreenState extends State<OTPScreen> {
                     MaterialPageRoute(builder: (context) => singUpState(widget.phone)),
                     (route) => false);
               } else {
+                preferences.setBool("isPuttingNumber", true);
                 preferences.setBool("isLogged",true);
                 Navigator.pushAndRemoveUntil(
                     context,
                     
-                    MaterialPageRoute(builder: (context) => Questionnaire(widget.phone)),
+                    // MaterialPageRoute(builder: (context) => Questionnaire(widget.phone)),
+                      MaterialPageRoute(builder: (context) => MyAppp()),
                     (route) => false);
               }
                       }

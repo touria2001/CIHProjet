@@ -13,6 +13,30 @@ class Questionnaire extends StatefulWidget {
 }
 
 class _TestState extends State<Questionnaire> {
+  List question = [
+  
+    {
+      "name": "Au cours des 12 derniers mois, votre poids a-t-il varié",
+      
+    },
+    {
+      "name": "Avez-vous des difficultés à marcher 500 mètres, sans aide",
+      
+    },
+    {
+      "name": "Votre diabète a-t-il eu un impact sur votre parcours scolaire",
+      
+    },
+    {
+      "name":
+          "Utilisez-vous un lecteur de glycémie ou un capteur en continu à votre domicile",
+      
+    },
+    {
+      "name": "Pensez-vous que vous avez trop de comprimés à prendre",
+      
+    },
+  ];
   late String q2;
   String question5 ="";
   String question6 ="";
@@ -23,7 +47,7 @@ class _TestState extends State<Questionnaire> {
     CollectionReference usersRef =
         FirebaseFirestore.instance.collection("questionnaire");
 
-    usersRef.doc("123456").update({"question5":question5,
+    usersRef.doc(widget.phone).update({"question5":question5,
     "question6":question6,
     "question7":question7,
     "question8":question8,
@@ -33,259 +57,177 @@ class _TestState extends State<Questionnaire> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColors.mainColor,
-          title: Text("Questionnaire"),
-        ),
         body: Container(
-            margin: EdgeInsets.only(top: 20, left: 5, right: 5),
-            child: SingleChildScrollView(
-              child: Column(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+        colors: [
+          Color.fromARGB(255, 54, 170, 157),
+          Color.fromARGB(255, 112, 201, 190).withOpacity(0.7),
+        ],
+        begin: const FractionalOffset(0.0, 0.4),
+        end: Alignment.topRight,
+      )),
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.only(
+              top: 50,
+              left: 10,
+              right: 20,
+            ),
+            width: MediaQuery.of(context).size.width,
+            height: 150,
+            child: Column(children: [
+              Row(
                 children: [
-                  Container(
-                      margin: EdgeInsets.only(bottom: 12),
-                      child: Text(
-                        "s'il vous plait repondez a ces questions:",
+                  Expanded(child: Container()),
+                  Text("QUESTIONNAIRE"),
+                  Icon(
+                    Icons.info_outline,
+                    size: 20,
+                  )
+                ],
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 20, right: 70, bottom: 10),
+                //****************************************************** */
+                child: Column(
+                  children: [
+                    Text("Répondre un questionnaire",
                         style: TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.iconColor2,
-                            shadows: [
-                              Shadow(
-                                color: AppColors.mainColor,
-                                blurRadius: 2.0,
-                                offset: Offset(0, 2),
-                              )
-                            ]),
-                      )),
-                  Container(
-                      padding:
-                          EdgeInsets.only(right: 8, bottom: 7, left: 8, top: 4),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: AppColors.textColor, //color of border
-                          width: 1, //width of border
-                        ),
-                        color: Color(0XFFF2FFF9),
-                        borderRadius: BorderRadius.circular(4.0),
-                        boxShadow: [
-                          BoxShadow(
-                            offset: Offset(0, 2),
-                            blurRadius: 1.0,
-                            color: Colors.black.withOpacity(0.5),
-                          ),
-                          // decoration: BoxDecoration(
-                          //       border: Border.all(
-                          //         color: colors.textColor, //color of border
-                          //         width: 1, //width of border
-                          //       ),
-                        ],
+                            //fontWeight: FontWeight.bold,
+                            fontSize: 25,
+                            color: Color(0xFF332d2b))),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(right: 120, left: 5),
+                      child: Text(
+                        "pour votre santé !!!",
+                        style: TextStyle(color: Color(0xFF332d2b)),
                       ),
-                      child: Column(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(bottom: 10, left: 5),
-                            width: MediaQuery.of(context).size.width,
-                            child: Text("Quel type de diabète avez vous ?",
-                                style: TextStyle(
-                                  height: 1.5,
-                                  fontSize: 15,
-                                  color: AppColors.mainBlacktColor,
-                                  fontFamily: 'Lobster',
-                                  fontStyle: FontStyle.italic,
-                                )),
-                          ),
-                          Container(
-                              padding: EdgeInsets.only(right: 8, left: 15),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: AppColors.textColor, //color of border
-                                  width: 1, //width of border
-                                ),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(25.0),
-                              ),
-                              child: TextField(
-                                maxLines: 3,
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: "ecrire ici",
-                                ),
-                                onChanged: (value) {
-                                  // addData(value, "question5");
-                                  question5 = value;
-                                },
-                              )),
-                        ],
+                    ),
+                  ],
+                ),
+              ),
+            ]),
+          ),
+          Expanded(
+              child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(70),
                       )),
-                  Container(
-                      margin: EdgeInsets.only(top: 7, bottom: 7),
-                      padding:
-                          EdgeInsets.only(right: 8, bottom: 7, left: 8, top: 4),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: AppColors.textColor, //color of border
-                          width: 1, //width of border
+                  child: Column(children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 20,
                         ),
-                        color: Color(0XFFF2FFF9),
-                        borderRadius: BorderRadius.circular(4.0),
-                        boxShadow: [
-                          BoxShadow(
-                            offset: Offset(0, 2),
-                            blurRadius: 1.0,
-                            color: Colors.black.withOpacity(0.5),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(bottom: 10, left: 5),
-                            width: MediaQuery.of(context).size.width,
-                            child: Text(
-                                "A quel âge, environ, un médecin vous a-t-il dit pour la première fois que vous aviez un diabète ?",
-                                style: TextStyle(
-                                  height: 1.5,
-                                  fontSize: 15,
-                                  color: AppColors.mainBlacktColor,
-                                  fontFamily: 'Lobster',
-                                  fontStyle: FontStyle.italic,
-                                )),
-                          ),
-                          Container(
-                              padding: EdgeInsets.only(right: 8, left: 15),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: AppColors.textColor, //color of border
-                                  width: 1, //width of border
-                                ),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(25.0),
+                        Text("Question et Réponse",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold)),
+                      ],
+                    ),
+                    /*--------------------------------------------*/
+                    Expanded(
+                        child: GestureDetector(
+                      child: ListView.separated(
+                          separatorBuilder: (context, index) => Divider(
+                                indent: 20,
+                                endIndent: 20,
+                                color: Color(0xFFa9a29f),
+                                thickness: 1,
                               ),
-                              child: TextField(
-                                maxLines: 3,
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
+                          itemCount: question.length,
+                          itemBuilder: (context, i) {
+                            return Container(
+                              height: 130,
+                              margin: EdgeInsets.only(
+                                  left: 20, top: 5, right: 20, bottom: 5),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(10),
+                                    topRight: Radius.circular(10),
+                                    bottomLeft: Radius.circular(10),
+                                    bottomRight: Radius.circular(10)),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: Offset(
+                                        0, 3), // changes position of shadow
+                                  ),
+                                ],
+                              ),
+                              child: ListTile(
+                                title: Text(
+                                  "${question[i]['name']}",
+                                  style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w500),
                                 ),
-                                onChanged: (value) {
-                                  // addData(value, "question6");
-                                  question6= value;
-                                },
-                              )),
-                        ],
-                      )),
-                  Container(
-                      padding:
-                          EdgeInsets.only(right: 8, bottom: 7, left: 8, top: 4),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: AppColors.textColor, //color of border
-                          width: 1, //width of border
+                                subtitle:TextField(
+                        maxLines: 1,
+                        decoration: InputDecoration(
+                          
+                          hintText: "ecrire ici",
                         ),
-                        color: Color(0XFFF2FFF9),
-                        borderRadius: BorderRadius.circular(4.0),
-                        boxShadow: [
-                          BoxShadow(
-                            offset: Offset(0, 2),
-                            blurRadius: 1.0,
-                            color: Colors.black.withOpacity(0.5),
-                          ),
-                        ],
+                        onChanged: (value) {
+                          if(i == 0){
+                               question5 =value; 
+                          }else if(i ==1){
+                               question6 = value;
+                          }else if(i==2){
+                            question7 =  value;
+
+                          }else{
+                               question8 = value;
+                          }
+                          
+                        },
                       ),
-                      child: Column(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(bottom: 10, left: 5),
-                            width: MediaQuery.of(context).size.width,
-                            child: Text(
-                                "Votre diabète a-t-il eu un impact sur votre parcours scolaire",
-                                style: TextStyle(
-                                  height: 1.5,
-                                  fontSize: 15,
-                                  color: AppColors.mainBlacktColor,
-                                  fontFamily: 'Lobster',
-                                  fontStyle: FontStyle.italic,
-                                )),
-                          ),
-                          Container(
-                              padding: EdgeInsets.only(right: 8, left: 15),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: AppColors.textColor, //color of border
-                                  width: 1, //width of border
-                                ),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(25.0),
+                               
+                                leading: Container(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      "${i+1}",
+                                      style: TextStyle(
+                                          color: Color(0xFF8f837f),
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    width: 40,
+                                    height: 40,
+                                    decoration: BoxDecoration(
+                                    
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10)),
+                                        gradient: LinearGradient(
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                          colors: [
+                                            Colors.white,
+                                            Color(0xFFffd28d),
+                                            Color(0xFFffd28d),
+                                            Colors.white
+                                          ],
+                                        ))),
+                               
                               ),
-                              child: TextField(
-                                maxLines: 3,
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                ),
-                                onChanged: (value) {
-                                  // addData(value, "question7");
-                                  question7 = value;
-                                },
-                              )),
-                        ],
-                      )),
-                  Container(
-                      margin: EdgeInsets.only(top: 7, bottom: 7),
-                      padding:
-                          EdgeInsets.only(right: 8, bottom: 7, left: 8, top: 4),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: AppColors.textColor, //color of border
-                          width: 1, //width of border
-                        ),
-                        color: Color(0XFFF2FFF9),
-                        borderRadius: BorderRadius.circular(4.0),
-                        boxShadow: [
-                          BoxShadow(
-                            offset: Offset(0, 2),
-                            blurRadius: 1.0,
-                            color: Colors.black.withOpacity(0.5),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(bottom: 10, left: 5),
-                            width: MediaQuery.of(context).size.width,
-                            child: Text("Quel est votre poids actuel",
-                                style: TextStyle(
-                                  height: 1.5,
-                                  fontSize: 15,
-                                  color: AppColors.mainBlacktColor,
-                                  fontFamily: 'Lobster',
-                                  fontStyle: FontStyle.italic,
-                                )),
-                          ),
-                          Container(
-                              padding: EdgeInsets.only(right: 8, left: 15),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: AppColors.textColor, //color of border
-                                  width: 1, //width of border
-                                ),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(25.0),
-                              ),
-                              child: TextField(
-                                maxLines: 3,
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                ),
-                                onChanged: (value) {
-                                  // addData(value, "question8");
-                                  question8= value;
-                                },
-                              )),
-                        ],
-                      )),
-                  Container(
-                      margin: EdgeInsets.all(17),
+                            );
+                          }),
+                   
+                    )),
+                     Container(
+                      
                       child: Row(
                         //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -319,8 +261,24 @@ class _TestState extends State<Questionnaire> {
                           ),
                         ],
                       )),
-                ],
-              ),
-            )));
+
+                    /*----------------------------------*/
+                  ]))),
+        
+        ],
+      ),
+    ));
+
+
+
+
+
+
+
+
+
+
+
+                     
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:p2_flutter/AppColors.dart';
-import 'package:p2_flutter/Home.dart';
+
 import 'package:p2_flutter/otp.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:date_field/date_field.dart';
