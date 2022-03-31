@@ -13,6 +13,7 @@ class Questionnaire extends StatefulWidget {
 }
 
 class _TestState extends State<Questionnaire> {
+  final _formKey = GlobalKey<FormState>();
   List question = [
   
     {
@@ -44,6 +45,7 @@ class _TestState extends State<Questionnaire> {
   String question8 ="";
 
   addData() async {
+    if (_formKey.currentState!.validate()) {
     CollectionReference usersRef =
         FirebaseFirestore.instance.collection("questionnaire");
 
@@ -52,7 +54,16 @@ class _TestState extends State<Questionnaire> {
     "question7":question7,
     "question8":question8,
     });
+      Navigator.of(context)
+                                    .push(MaterialPageRoute(builder: (context) {
+                                  return MyAppp();
+                                }));
   }
+  else{
+ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('les champs sont obligatoirs')),
+                  );
+                }}
 
   @override
   Widget build(BuildContext context) {
@@ -174,7 +185,13 @@ class _TestState extends State<Questionnaire> {
                                       fontSize: 17,
                                       fontWeight: FontWeight.w500),
                                 ),
-                                subtitle:TextField(
+                                subtitle:TextFormField(
+                                                                         validator: (value) {
+    if (value == null || value.isEmpty) {
+      return 'ce champ est obligatoir';
+    }
+    return null;
+  },
                         maxLines: 1,
                         decoration: InputDecoration(
                           
@@ -249,10 +266,7 @@ class _TestState extends State<Questionnaire> {
                             // style: flatButtonStyle,
                             onPressed: () {
                               addData();
-                              Navigator.of(context)
-                                  .push(MaterialPageRoute(builder: (context) {
-                                return MyAppp();
-                              }));
+                             
                             },
                             child: Image.asset(
                               "assets/image/suivant.png",
