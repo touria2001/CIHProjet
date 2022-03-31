@@ -1,3 +1,5 @@
+// import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:p2_flutter/utils/colors.dart';
 import 'package:p2_flutter/utils/dimensions.dart';
@@ -5,10 +7,14 @@ import 'package:p2_flutter/widgets/small_text.dart';
 
 import 'big_text.dart';
 import 'icon_and_text_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AppColumn extends StatelessWidget {
   final String text;
-  const AppColumn({Key? key,required this.text}) : super(key: key);
+  final String date;
+  final String heure;
+  final String lien;
+  const AppColumn({Key? key,required this.text,required this.date,required this.heure, required this.lien}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +32,25 @@ class AppColumn extends StatelessWidget {
 
             ),
             SizedBox(width: 10,),
-            SmallText(text: "lien vers le meet"),
+            GestureDetector(
+  onTap: () async{
+    
+    
+  
+  if (await canLaunch(lien)) {
+    await launch(lien);
+  } else {
+    throw 'Could not launch $lien';
+  
+}
+  },
+  child: SmallText(text: "sujet"),
+),
+            
+  
+
+           
+            
           ],
         ),
         SizedBox(height:Dimensions.height5
@@ -37,10 +61,10 @@ class AppColumn extends StatelessWidget {
           children: [
 
             IconAndTextWidget(icon: Icons.date_range,
-                text: "Date:jj/mm/aaaa",
+                text: date,
                 iconColor: AppColors.iconColor1),
             IconAndTextWidget(icon: Icons.access_time_sharp,
-                text: "heure:21h30min",
+                text: heure,
                 iconColor: AppColors.iconColor2),
 
           ], ),

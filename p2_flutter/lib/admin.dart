@@ -142,10 +142,63 @@ class _AdminState extends State<Admin> {
                         color.AppColors.mainColor2,
                         color.AppColors.mainColor1.withOpacity(0.7),
                       ],
+
                       begin: const FractionalOffset(0.0, 0.4),
                       end: Alignment.topRight,
                     )),
                     child: Column(
+
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 20, right: 70, bottom: 10),
+                    
+                      child: Column(
+                        children: [
+                          Text("Réponses du Qestionnaire",
+                              style: TextStyle(
+                                  //fontWeight: FontWeight.bold,
+                                  fontSize: 25,
+                                  color: color.AppColors.mainBlacktColor)),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(right: 120, left: 5),
+                            child: Text(
+                              "Accessible que par l'admin ",
+                              style:
+                                  TextStyle(color: color.AppColors.titleColor),
+                            ),
+                          ),
+                          Container(
+                              child: Icon(Icons.search),
+                              padding: EdgeInsets.only(right: 230),
+                              margin: EdgeInsets.only(top: 20, left: 10),
+                              width: double.infinity,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                color: color.AppColors.mainColor3,
+                                borderRadius: BorderRadius.circular(10),
+                              ))
+                        ],
+                      ),
+                    
+                    )
+                  ]),
+                ),
+                Expanded(
+                    child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(70),
+                      )),
+                  child: Column(children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+
+                    Row(
                       children: [
                         Container(
                           padding: const EdgeInsets.only(

@@ -27,6 +27,7 @@ class VoirPlus extends StatelessWidget {
             final data = snapshot.requireData;
 
             return Scaffold(
+
               appBar: AppBar(
                 backgroundColor: color.AppColors.mainColor2,
                 elevation: 10,
@@ -46,6 +47,11 @@ class VoirPlus extends StatelessWidget {
                 ),
               ),
               body: Container(
+
+              drawer: Drawer(),
+              body:
+               Container(
+
                 /*padding: const EdgeInsets.only(
                   top: 50,
                   left: 10,
@@ -62,6 +68,7 @@ class VoirPlus extends StatelessWidget {
                     ),
                     Expanded(child: Container()),
                   ]),*/
+
                 child: ListView.builder(
                   itemCount: data.docs.length,
                   itemBuilder: (context, index) {
@@ -100,6 +107,22 @@ class VoirPlus extends StatelessWidget {
 
                 //ajouter ici ____________________
                 // ]),
+
+                 child: ListView.builder(
+                    itemCount: data.docs.length,
+                    itemBuilder: (context, index) {
+                      return ElevatedButton(
+                          onPressed: () {
+                            print(data.docs[index].get('question1'));
+                          },
+                          /*******************hona */
+                          child: Text(data.docs[index].get('question1')));
+                    },
+                  ),
+
+                  //ajouter ici __________________________________________________________
+               // ]),
+
               ),
             );
           }

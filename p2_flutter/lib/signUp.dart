@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:p2_flutter/AppColors.dart';
-import 'package:p2_flutter/Home.dart';
+
 import 'package:p2_flutter/otp.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:date_field/date_field.dart';
@@ -27,6 +27,7 @@ class _singUpState extends State<singUpState> {
   var selectedDate;
   String? sexe;
   String? person ;
+  
 
 
   GlobalKey<FormState> formstate = new GlobalKey<FormState>();
@@ -41,7 +42,7 @@ class _singUpState extends State<singUpState> {
       setData();
       preferences.setBool("isSubscribed", true);
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context){
-        return Test();
+        return Test(widget.phone);
       }
       )
       );

@@ -9,7 +9,7 @@ import 'package:p2_flutter/widgets/app_column.dart';
 import 'package:p2_flutter/widgets/big_text.dart';
 import 'package:p2_flutter/widgets/icon_and_text_widget.dart';
 import 'package:p2_flutter/widgets/small_text.dart';
-
+import '../constants.dart';
 import '../../routes/route_helper.dart';
 import '../constants.dart';
 import 'informations.dart';
@@ -49,64 +49,55 @@ class _Part1PageBodyState extends State<Part1PageBody> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [StreamBuilder<QuerySnapshot>(
-                  stream: Firestore.collection('meets').snapshots(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasError) {
-                      return Center(
-                        child: Text(snapshot.error.toString()),
-                      );
-                    }
+      children: [
+        // StreamBuilder<QuerySnapshot>(
+        //     stream: Firestore.collection('meets').snapshots(),
+        //     builder: (context, snapshot) {
+        //       if (snapshot.hasError) {
+        //         return Center(
+        //           child: Text(snapshot.error.toString()),
+        //         );
+        //       }
 
-                    if (!snapshot.hasData ||
-                        snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(child: CircularProgressIndicator());
-                    } else {
-                      final data = snapshot.requireData;
-                      return
-        // GestureDetector(
-        //   onTap: () {
-        //    /* Meet meet = Meet(
-        //      titre: data.docs[index].get('titre'),
-        //                       date: "20-03-2022",
-        //                       text: data.docs[index].get('text'),
-        //                       image: data.docs[index].get('image'));*/
-        //     Get.toNamed(RouteHelper.getMeetsDetail());
-        //   },
-        //   child: 
-        Container(
-              height: Dimensions.pageView,
-              child: 
-         PageView.builder(
-                
-                          controller: pageController,
-                          itemCount: data.docs.length,
-                          itemBuilder: (context, position) {
-                            return    GestureDetector(
-          onTap: () {
-            Meet meet = Meet(
-             titre: data.docs[position].get('titre'),
-                              date: data.docs[position].get('date'),
-                              heure: data.docs[position].get('heure'),
-                              lien: data.docs[position].get('lien'),detail:data.docs[position].get('detail'));
-           // Get.toNamed(RouteHelper.getMeetsDetail(meet));
-           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => MeetsDetail(meet)));
-          },
-          child: Container(
-            //  height: Dimensions.pageView,
-              child: 
-                            _buildPageItem(
-                                position, data.docs[position])
-           ));
-            }
-           ))
-                 // ),
-       // )
-        ;}}),
-          SizedBox(
+        //       if (!snapshot.hasData ||
+        //           snapshot.connectionState == ConnectionState.waiting) {
+        //         return const Center(child: CircularProgressIndicator());
+        //       } else {
+        //         final data = snapshot.requireData;
+               // return
+                 Container(
+                        height: Dimensions.pageView,
+                        child: PageView.builder(
+                            controller: pageController,
+                            itemCount: INFORMATIONS_DATA_List.length,
+                            itemBuilder: (context, position) {
+                              return GestureDetector(
+                                  onTap: () {
+                                    // Meet meet = Meet(
+                                    //     titre: data.docs[position].get('titre'),
+                                    //     date: data.docs[position].get('date'),
+                                    //     heure: data.docs[position].get('heure'),
+                                    //     lien: data.docs[position].get('lien'),
+                                    //     detail:
+                                    //         data.docs[position].get('detail'));
+
+                                    // Navigator.push(
+                                    //     context,
+                                    //     MaterialPageRoute(
+                                    //         builder: (context) =>
+                                    //             MeetsDetail(meet)));
+                                  },
+                                  child: Container(
+                                        height: Dimensions.pageView,
+                                      child: _buildPageItem(
+                                          position)));
+                            })),
+                    // ),
+                    // )
+                    
+              //}
+          //  }),
+        SizedBox(
           height: Dimensions.height2,
         ),
 
@@ -287,7 +278,7 @@ class _Part1PageBodyState extends State<Part1PageBody> {
     // });
   }
 
-  Widget _buildPageItem(int index, QueryDocumentSnapshot<Object?> s) {
+  Widget _buildPageItem(int index) {
     Matrix4 matrix = new Matrix4.identity();
     if (index == _currPageValue.floor()) {
       var currScale = 1 - (_currPageValue - index) * (1 - _scaleFactor);
@@ -321,15 +312,14 @@ class _Part1PageBodyState extends State<Part1PageBody> {
           GestureDetector(
             onTap: () {
               //Get.toNamed(RouteHelper.getMeetsDetail());
-               Meet meet = Meet(
-             titre: s.get('titre'),
-                              date: s.get('date'),
-                              heure: s.get('heure'),
-                              lien: s.get('lien'),detail:s.get('detail'));
-                     Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => MeetsDetail(meet)));
+              Meet meet = Meet(
+                  titre: INFORMATIONS_DATA_List[index].name,
+                  date:INFORMATIONS_DATA_List[index].date,
+                  heure:"08:00",
+                  lien: "sujet",
+                  detail: INFORMATIONS_DATA_List[index].descreption);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MeetsDetail(meet)));
             },
             child: Container(
                 height: Dimensions.pageViewContainer,
@@ -342,7 +332,7 @@ class _Part1PageBodyState extends State<Part1PageBody> {
                         fit: BoxFit.cover,
                         image: AssetImage("assets/image/nouv.png")))),
           ),
-          Align( 
+          Align(
             alignment: Alignment.bottomCenter,
             child: Container(
               height: Dimensions.pageViewTextContainer,
@@ -372,8 +362,11 @@ class _Part1PageBodyState extends State<Part1PageBody> {
                 padding: EdgeInsets.only(
                     top: Dimensions.height15, left: 15, bottom: 15),
                 child: AppColumn(
-                  text: s.get('titre') as String,
-                ),
+                    text: INFORMATIONS_DATA_List[index].name as String,
+                    date: INFORMATIONS_DATA_List[index].date as String,
+                    heure: "08:00",
+                    lien: "sujet"
+                    ),
               ),
             ),
           ),

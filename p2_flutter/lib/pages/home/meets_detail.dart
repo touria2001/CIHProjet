@@ -9,6 +9,7 @@ import 'package:p2_flutter/widgets/big_text.dart';
 import 'package:p2_flutter/widgets/exandable_text_widget.dart';
 import 'meet.dart';
 import 'main_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MeetsDetail extends StatefulWidget {
 
@@ -61,7 +62,7 @@ class MeetsDetailState extends State<MeetsDetail> {
                       Get.to(()=>MainPage());
                     },
                     child: AppIcon(icon: Icons.arrow_back_ios)),
-                AppIcon(icon: Icons.star_border_purple500_outlined,)
+                // AppIcon(icon: Icons.star_border_purple500_outlined,)
               ],
             ),
 
@@ -86,7 +87,7 @@ class MeetsDetailState extends State<MeetsDetail> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AppColumn(text: widget.meet.titre,),
+                    AppColumn(text: widget.meet.titre,date:widget.meet.date,heure: widget.meet.heure,lien: widget.meet.lien),
                     SizedBox(height: Dimensions.height20,),
                     BigText(text: "Détails"),
                     // expandable text widget
@@ -137,7 +138,18 @@ class MeetsDetailState extends State<MeetsDetail> {
 
                   padding: EdgeInsets.only(top: Dimensions.height20,bottom: Dimensions.height20,left: Dimensions.width20,right: Dimensions.width20),
 
-                  child: BigText(text: "intéressé(e)",color: Colors.white,size: 15,),
+                  child:GestureDetector(child: BigText(text: "accéder au meet",color: Colors.white,size: 15,),
+                  onTap: () async{
+    
+    
+  
+  if (await canLaunch(widget.meet.lien)) {
+    await launch(widget.meet.lien);
+  } else {
+    throw 'Could not launch $widget.meet.lien';
+  
+}
+  },),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(Dimensions.radius20),
                     color: _color,

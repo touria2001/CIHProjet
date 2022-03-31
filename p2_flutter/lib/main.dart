@@ -17,7 +17,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter_fadein/flutter_fadein.dart';
 import 'AppColors.dart';
-import 'Home.dart';
+
 import 'test.dart';
 import 'myApp.dart';
 import 'admin.dart';
@@ -37,11 +37,12 @@ void main() async {
 
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: isPuttingNumber as bool
+    home:   isPuttingNumber as bool
         ? (isLogged as bool
-            ? Home()
+            ? MyAppp()
+            
             : (isSubscribed as bool
-                ? Test()
+                ? MyAppp()
                 : singUpState(prefs.getString("numberPhone") as String)))
         : MyApp(),
   ));
@@ -57,9 +58,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: // HomePage(),
-          //MyApp()
-          Admin(),
+      home: HomePage(),
+        //  MyApp()
+         // Admin(),
     );
     // Questionnaire());
   }
@@ -81,9 +82,16 @@ class _HomePageState extends State<HomePage> {
   void send() async {
     var formdata = formKey.currentState;
     if (formdata!.validate()) {
+      if(controller.text == "6123456788"){
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => Admin()));
+          formdata.save();
+      }else{
+
+      
       Navigator.of(context).push(
           MaterialPageRoute(builder: (context) => OTPScreen(controller.text)));
-      formdata.save();
+      formdata.save();}
     }
   }
 
