@@ -34,17 +34,21 @@ void main() async {
   var isSubscribed = (prefs.getBool('isSubscribed') == null)
       ? false
       : prefs.getBool('isSubscribed');
+  var isAdmin = (prefs.getBool('Admin') == null)
+      ? false
+      : true;
 
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home:   isPuttingNumber as bool
+    home: isPuttingNumber as bool
         ? (isLogged as bool
             ? MyAppp()
-            
             : (isSubscribed as bool
                 ? MyAppp()
                 : singUpState(prefs.getString("numberPhone") as String)))
-        : MyApp(),
+        : (isAdmin as bool
+                ? Admin()
+                : MyApp()),
   ));
 } //class without interaction
 
@@ -59,8 +63,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: HomePage(),
-        //  MyApp()
-         // Admin(),
+      //  MyApp()
+      // Admin(),
     );
     // Questionnaire());
   }
@@ -82,16 +86,17 @@ class _HomePageState extends State<HomePage> {
   void send() async {
     var formdata = formKey.currentState;
     if (formdata!.validate()) {
-      if(controller.text == "6123456788"){
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => Admin()));
-          formdata.save();
-      }else{
-
-      
-      Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => OTPScreen(controller.text)));
-      formdata.save();}
+      if (controller.text == "6123456788") {
+        SharedPreferences preferences = await SharedPreferences.getInstance();
+        preferences.setBool("Admin", true);
+        Navigator.of(context)
+            .pushReplacement(MaterialPageRoute(builder: (context) => Admin()));
+        formdata.save();
+      } else {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => OTPScreen(controller.text)));
+        formdata.save();
+      }
     }
   }
 

@@ -138,18 +138,19 @@ class MeetsDetailState extends State<MeetsDetail> {
 
                   padding: EdgeInsets.only(top: Dimensions.height20,bottom: Dimensions.height20,left: Dimensions.width20,right: Dimensions.width20),
 
-                  child:GestureDetector(child: BigText(text: "accéder au meet",color: Colors.white,size: 15,),
-                  onTap: () async{
+                  child:GestureDetector(child: BigText(text: "intéressé",color: Colors.white,size: 15,),
+//                   onTap: () async{
     
     
   
-  if (await canLaunch(widget.meet.lien)) {
-    await launch(widget.meet.lien);
-  } else {
-    throw 'Could not launch $widget.meet.lien';
+//   if (await canLaunch(widget.meet.lien)) {
+//     await launch(widget.meet.lien);
+//   } else {
+//     throw 'Could not launch $widget.meet.lien';
   
-}
-  },),
+// }
+//   },
+                  ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(Dimensions.radius20),
                     color: _color,

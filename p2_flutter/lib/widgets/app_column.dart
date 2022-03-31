@@ -7,7 +7,7 @@ import 'package:p2_flutter/widgets/small_text.dart';
 
 import 'big_text.dart';
 import 'icon_and_text_widget.dart';
-import 'package:url_launcher/url_launcher.dart';
+
 
 class AppColumn extends StatelessWidget {
   final String text;
@@ -33,17 +33,17 @@ class AppColumn extends StatelessWidget {
             ),
             SizedBox(width: 10,),
             GestureDetector(
-  onTap: () async{
+//   onTap: () async{
     
     
   
-  if (await canLaunch(lien)) {
-    await launch(lien);
-  } else {
-    throw 'Could not launch $lien';
+//   if (await canLaunch(lien)) {
+//     await launch(lien);
+//   } else {
+//     throw 'Could not launch $lien';
   
-}
-  },
+// }
+//   },
   child: SmallText(text: "sujet"),
 ),
             
