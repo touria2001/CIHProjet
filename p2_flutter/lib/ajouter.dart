@@ -11,7 +11,7 @@ import 'package:path/path.dart';
 import 'package:p2_flutter/utils/colors.dart' as color;
 
 class Ajouter extends StatelessWidget {
-  static final String title = 'Ajouter une image ou fichier';
+  static final String title = 'Ajouter une image ou un fichier';
 
   @override
   Widget build(BuildContext context) => MaterialApp(
@@ -42,12 +42,21 @@ class _MainPageState extends State<MainPage> {
         title: Text(
           Ajouter.title,
           style: TextStyle(
-            color: color.AppColors.iconColor4,
+            color: color.AppColors.mainBlacktColor,
             fontWeight: FontWeight.w600,
           ),
         ),
         centerTitle: true,
         backgroundColor: color.AppColors.mainColor3,
+        leading: IconButton(
+          color: color.AppColors.mainBlacktColor,
+          icon: Icon(
+            Icons.arrow_back,
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
       ),
       body: Container(
         padding: EdgeInsets.all(32),
@@ -63,7 +72,10 @@ class _MainPageState extends State<MainPage> {
               SizedBox(height: 8),
               Text(
                 fileName,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    color: color.AppColors.iconColor4),
               ),
               SizedBox(height: 48),
               ButtonWidget(
@@ -115,8 +127,11 @@ class _MainPageState extends State<MainPage> {
             final percentage = (progress * 100).toStringAsFixed(2);
 
             return Text(
-              '$percentage %',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              '$percentage % enregistré',
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: color.AppColors.iconColor4),
             );
           } else {
             return Container();
